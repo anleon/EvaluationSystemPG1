@@ -21,7 +21,7 @@
 
         <property name="hibernate.connection.url">jdbc:mysql://localhost/evaluationSystemPG1</property>
         <property name="hibernate.connection.password">pg1</property>
-        <property name="hibernate.connection.username">pg1</property>
+        <property name="hibernate.connection.username">PG1</property>
 
         <property name="hibernate.default_schema">evaluationSystemPG1</property>
     </session-factory>

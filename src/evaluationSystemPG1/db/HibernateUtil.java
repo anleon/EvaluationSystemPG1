@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import evaluationSystemPG1.entitys.Question;
+
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
@@ -13,7 +15,7 @@ public class HibernateUtil {
 	public static void initHibernate(File configFile){
 	    	if( null == sessionFactory){
 	    		AnnotationConfiguration annotationConfiguration = new AnnotationConfiguration()
-	    					//							.addAnnotatedClass(Poster.class)
+	    												.addAnnotatedClass(Question.class)
 	    					//							.addAnnotatedClass(Post.class)
 	    												.configure(configFile);
 	    		sessionFactory = annotationConfiguration.buildSessionFactory();

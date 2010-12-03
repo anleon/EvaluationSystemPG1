@@ -16,7 +16,7 @@ import org.hibernate.annotations.Cascade;
 
 import evaluationSystemPG1.abstracts.IOption;
 
-@Entity(name="posts")
+@Entity(name="questions")
 public class Question implements Serializable{
 
 	private static final long serialVersionUID = 544334524525425L;
@@ -29,7 +29,7 @@ public class Question implements Serializable{
 	
 //	@JoinColumn()
 //	@ManyToOne(cascade=CascadeType.ALL)
-	private IOption option;
+//	private IOption option;
 	
 	public String getText() {
 		return text;
@@ -47,7 +47,7 @@ public class Question implements Serializable{
 		this.date = date;
 	}
 
-	public void setId(int id) {
+	private void setId(int id) {
 		this.id = id;
 	}
 

@@ -10,7 +10,7 @@ import evaluationSystemPG1.db.HibernateUtil;
 public class QuestionDAO {
 	
 
-	public static List<Question> getPosts(){
+	public static List<Question> getQuestions(){
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
 
@@ -22,11 +22,11 @@ public class QuestionDAO {
 		return posts;
 	}
 	
-	public static void savePosts(Question post){
+	public static void saveQuestion(Question question){
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
 
-		herbSession.save(post);
+		herbSession.save(question);
 		
 		herbSession.getTransaction().commit();
 	}

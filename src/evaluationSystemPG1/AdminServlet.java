@@ -43,6 +43,8 @@ public class AdminServlet extends HttpServlet {
 			guestSession = new GuestbookSession();
 		}*/		
 		init(this.getServletContext());
+		System.out.println("japp");
+		request.getRequestDispatcher("/QuestionTest.jsp").include(request, response);
 	}
 
 	/**
@@ -51,7 +53,7 @@ public class AdminServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		init(this.getServletContext());
 		
-		request.getRequestDispatcher("WEB-INF/Japp.jsp").include(request, response);
+		request.getRequestDispatcher("QuestionTest.jsp").include(request, response);
 		
 		// TODO Auto-generated method stub
 	}
