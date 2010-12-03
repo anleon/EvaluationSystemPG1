@@ -43,7 +43,6 @@ public class AdminServlet extends HttpServlet {
 			guestSession = new GuestbookSession();
 		}*/		
 		init(this.getServletContext());
-		System.out.println("japp");
 		request.getRequestDispatcher("/QuestionTest.jsp").include(request, response);
 	}
 

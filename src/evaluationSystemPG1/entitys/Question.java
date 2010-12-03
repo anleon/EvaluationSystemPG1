@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
 
@@ -27,9 +28,9 @@ public class Question implements Serializable{
 	private String text;
 	private Date date;
 	
-//	@JoinColumn()
-//	@ManyToOne(cascade=CascadeType.ALL)
-//	private IOption option;
+	@JoinColumn()	
+	@OneToOne
+	private IOption IOption;
 	
 	public String getText() {
 		return text;
@@ -53,6 +54,14 @@ public class Question implements Serializable{
 
 	public int getId() {
 		return id;
+	}
+
+	public void setIOption(IOption iOption) {
+		IOption = iOption;
+	}
+
+	public IOption getIOption() {
+		return IOption;
 	}
 	
 }

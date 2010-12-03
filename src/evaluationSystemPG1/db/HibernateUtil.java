@@ -6,7 +6,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import evaluationSystemPG1.abstracts.IOption;
 import evaluationSystemPG1.entitys.Question;
+import evaluationSystemPG1.entitys.TextOption;
 
 public class HibernateUtil {
 
@@ -16,7 +18,8 @@ public class HibernateUtil {
 	    	if( null == sessionFactory){
 	    		AnnotationConfiguration annotationConfiguration = new AnnotationConfiguration()
 	    												.addAnnotatedClass(Question.class)
-	    					//							.addAnnotatedClass(Post.class)
+	    												.addAnnotatedClass(TextOption.class)
+	    												.addAnnotatedClass(IOption.class)
 	    												.configure(configFile);
 	    		sessionFactory = annotationConfiguration.buildSessionFactory();
 	    	}

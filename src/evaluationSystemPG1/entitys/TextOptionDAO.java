@@ -5,33 +5,30 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import evaluationSystemPG1.abstracts.IOptionDAO;
 import evaluationSystemPG1.db.HibernateUtil;
 
-public class QuestionDAO {
-	
+public class TextOptionDAO {
 
-	public static List<Question> getAllQuestions(){
+	public static List<TextOption> getAllTextOptions(){
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
 
-		Query query = herbSession.createQuery("from evaluationSystemPG1.entitys.Question");
+		Query query = herbSession.createQuery("from evaluationSystemPG1.entitys.TextOption");
 //		Query query = herbSession.createCriteria("from se.kyh.guestbook.entities.Post");
 		
 		herbSession.getTransaction().commit();
-		List<Question> posts = query.list();
+		List<TextOption> textOptions = query.list();
 
-		return posts;
+		return textOptions;
 	}
 
-	public static void saveQuestion(Question question){
+	public static void saveOption(TextOption textOption){
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
-		IOptionDAO.saveOption(question.getIOption());
 
-		herbSession.save(question);
+		herbSession.save(textOption);
 		
 		herbSession.getTransaction().commit();
 	}
-}
 
+}

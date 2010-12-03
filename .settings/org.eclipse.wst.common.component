@@ -3,6 +3,7 @@
     <wb-module deploy-name="EvaluationSystemPG1">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="context-root" value="EvaluationSystemPG1"/>
         <property name="java-output-path" value="/EvaluationSystemPG1/build/classes"/>
     </wb-module>
