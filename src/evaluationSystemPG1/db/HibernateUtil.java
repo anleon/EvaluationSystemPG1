@@ -6,8 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import evaluationSystemPG1.abstracts.IOption;
+import evaluationSystemPG1.abstracts.Option;
+import evaluationSystemPG1.entitys.Alternative;
 import evaluationSystemPG1.entitys.Question;
+import evaluationSystemPG1.entitys.Radiobutton;
 import evaluationSystemPG1.entitys.TextOption;
 
 public class HibernateUtil {
@@ -18,8 +20,10 @@ public class HibernateUtil {
 	    	if( null == sessionFactory){
 	    		AnnotationConfiguration annotationConfiguration = new AnnotationConfiguration()
 	    												.addAnnotatedClass(Question.class)
+	    												.addAnnotatedClass(Option.class)
 	    												.addAnnotatedClass(TextOption.class)
-	    												.addAnnotatedClass(IOption.class)
+	    												.addAnnotatedClass(Radiobutton.class)
+	    												.addAnnotatedClass(Alternative.class)
 	    												.configure(configFile);
 	    		sessionFactory = annotationConfiguration.buildSessionFactory();
 	    	}

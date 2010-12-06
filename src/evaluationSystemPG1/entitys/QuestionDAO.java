@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import evaluationSystemPG1.abstracts.IOptionDAO;
 import evaluationSystemPG1.db.HibernateUtil;
 
 public class QuestionDAO {
@@ -27,7 +26,7 @@ public class QuestionDAO {
 	public static void saveQuestion(Question question){
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
-		IOptionDAO.saveOption(question.getIOption());
+//		IOptionDAO.saveOption(question.getIOption());
 
 		herbSession.save(question);
 		

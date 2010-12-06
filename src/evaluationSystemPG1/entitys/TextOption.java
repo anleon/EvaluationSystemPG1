@@ -9,46 +9,54 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 
-import evaluationSystemPG1.abstracts.IOption;
+import evaluationSystemPG1.abstracts.Answer;
+import evaluationSystemPG1.abstracts.Option;
 
 /**
  * @author ollesvensson
  *
  */
 @Entity(name="text_options")
-public class TextOption implements IOption,Serializable {
+@Inheritance(strategy=InheritanceType.JOINED)
+public class TextOption extends Option implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4835492913976660769L;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int textId;
 	
-	@JoinColumn(name="question_id")
-	@OneToOne
-	private Question question;
 	private String textAnswer; 
 	
-	public int getId() {
-		return id;
+	@Override
+	public void setAnswer(Answer answer) {
+		System.out.println("not implemented");
 	}
-	private void setId(int id) {
-		this.id = id;
-	}
-	
+
 	@Override
 	public String getAnswerString() {
 		return textAnswer;
 	}
-	public void setAnswerString(String textAnswer) {
-		this.textAnswer = textAnswer;
+	
+	public void setAnswerString(String s) {
+		this.textAnswer = s;
 	}
+
+/*	public void setId(int id) {
+		this.textId = id;
+	}
+	public int getId() {
+		return textId;
+	}
+*/
 	
 }

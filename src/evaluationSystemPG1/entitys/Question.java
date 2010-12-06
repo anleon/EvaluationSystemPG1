@@ -2,8 +2,10 @@ package evaluationSystemPG1.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +17,7 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
 
-import evaluationSystemPG1.abstracts.IOption;
+import evaluationSystemPG1.abstracts.Option;
 
 @Entity(name="questions")
 public class Question implements Serializable{
@@ -28,9 +30,11 @@ public class Question implements Serializable{
 	private String text;
 	private Date date;
 	
-	@JoinColumn()	
-	@OneToOne
-	private IOption IOption;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Option option;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private Option radioPanel;
 	
 	public String getText() {
 		return text;
@@ -56,12 +60,20 @@ public class Question implements Serializable{
 		return id;
 	}
 
-	public void setIOption(IOption iOption) {
-		IOption = iOption;
+	public void setIOption(Option iOption) {
+		this.option = iOption;
 	}
 
-	public IOption getIOption() {
-		return IOption;
+	public Option getIOption() {
+		return option;
+	}
+
+	public void setRadioPanel(Option radioPanel) {
+		this.radioPanel = radioPanel;
+	}
+
+	public Option getRadioPanel() {
+		return radioPanel;
 	}
 	
 }
