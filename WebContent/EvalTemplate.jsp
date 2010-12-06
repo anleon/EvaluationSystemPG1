@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <%@page language="java" contentType="text/html; charset=utf-8"%>
 <%@page import="evaluationSystemPG1.entities.EvalTemplate"%>
+<%@page import="evaluationSystemPG1.entities.Group"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.LinkedList"%>
 <% 	EvalTemplate et = (EvalTemplate) request.getAttribute("evalTemplate");
-	// List<Group> gs = (List<Group>) request.getAttribute("groups");
+	 List<Group> gs = (List<Group>) request.getAttribute("groups");
 	// Temporary test code
-	//	gs = new LinkedList<Group>();
-	//	Group gg = new Group();
-	//	gg.setGroupName("AD10");
-	//	gs.add(gg);
+		gs = new LinkedList<Group>();
+		Group gg = new Group();
+		gg.setGroupName("AD10");
+		gs.add(gg);
 	// End temporary test code
 %>
 

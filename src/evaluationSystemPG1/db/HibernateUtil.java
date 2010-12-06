@@ -7,10 +7,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import evaluationSystemPG1.abstracts.Option;
-import evaluationSystemPG1.entitys.Alternative;
-import evaluationSystemPG1.entitys.Question;
-import evaluationSystemPG1.entitys.Radiobutton;
-import evaluationSystemPG1.entitys.TextOption;
+import evaluationSystemPG1.entities.Alternative;
+import evaluationSystemPG1.entities.Question;
+import evaluationSystemPG1.entities.Radiobutton;
+import evaluationSystemPG1.entities.TextOption;
 
 public class HibernateUtil {
 
