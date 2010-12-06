@@ -9,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.UniqueConstraint;
 
+import evaluationSystemPG1.abstracts.IEntity;
+
 @Entity(name = "alternatives")
-public class Alternative implements Serializable{
+public class Alternative implements IEntity,Serializable{
 	
 	/**
 	 * 

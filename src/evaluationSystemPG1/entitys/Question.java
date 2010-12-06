@@ -17,10 +17,11 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
 
+import evaluationSystemPG1.abstracts.IEntity;
 import evaluationSystemPG1.abstracts.Option;
 
 @Entity(name="questions")
-public class Question implements Serializable{
+public class Question implements Serializable,IEntity{
 
 	private static final long serialVersionUID = 544334524525425L;
 	
@@ -31,10 +32,10 @@ public class Question implements Serializable{
 	private Date date;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Option option;
+	private TextOption textOption;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private Option radioPanel;
+	private Option MultiOption;
 	
 	public String getText() {
 		return text;
@@ -60,20 +61,20 @@ public class Question implements Serializable{
 		return id;
 	}
 
-	public void setIOption(Option iOption) {
-		this.option = iOption;
+	public void setTextOption(TextOption option) {
+		this.textOption = option;
 	}
 
-	public Option getIOption() {
-		return option;
+	public TextOption getTextOption() {
+		return textOption;
 	}
 
-	public void setRadioPanel(Option radioPanel) {
-		this.radioPanel = radioPanel;
+	public void setMultiOption(Option multiOption) {
+		MultiOption = multiOption;
 	}
 
-	public Option getRadioPanel() {
-		return radioPanel;
+	public Option getMultiOption() {
+		return MultiOption;
 	}
-	
+
 }
