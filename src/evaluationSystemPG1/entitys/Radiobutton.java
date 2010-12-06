@@ -3,7 +3,7 @@ package evaluationSystemPG1.entitys;
 import java.io.Serializable;
 import java.util.Set;
 
-import javax.annotation.Generated;
+import javax.annotation.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
