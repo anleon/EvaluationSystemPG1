@@ -23,18 +23,14 @@ import evaluationSystemPG1.abstracts.Option;
  *
  */
 @Entity(name="text_options")
-@Inheritance(strategy=InheritanceType.JOINED)
+//@Inheritance(strategy=InheritanceType.JOINED)
 public class TextOption extends Option implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4835492913976660769L;
-	
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int textId;
-	
+		
 	private String textAnswer; 
 	
 	@Override
