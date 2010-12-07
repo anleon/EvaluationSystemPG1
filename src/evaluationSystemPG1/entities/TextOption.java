@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 
 
 import evaluationSystemPG1.abstracts.Answer;
+import evaluationSystemPG1.abstracts.IEntity;
 import evaluationSystemPG1.abstracts.Option;
 
 /**
@@ -24,21 +25,31 @@ import evaluationSystemPG1.abstracts.Option;
  */
 @Entity(name="text_options")
 //@Inheritance(strategy=InheritanceType.JOINED)
-public class TextOption extends Option implements Serializable {
+public class TextOption implements Serializable,IEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4835492913976660769L;
 		
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	private String textAnswer; 
+
 	
-	@Override
-	public void setAnswer(Answer answer) {
-		System.out.println("not implemented");
+public void setId(int id) {
+		this.id = id;
 	}
 
-	@Override
+	public int getId() {
+	return id;
+}
+
+	/*	public void setAnswer(Answer answer) {
+		System.out.println("not implemented");
+	}
+*/
 	public String getAnswerString() {
 		return textAnswer;
 	}
@@ -47,12 +58,5 @@ public class TextOption extends Option implements Serializable {
 		this.textAnswer = s;
 	}
 
-/*	public void setId(int id) {
-		this.textId = id;
-	}
-	public int getId() {
-		return textId;
-	}
-*/
 	
 }

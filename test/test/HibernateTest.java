@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.Set;
 
 
+import evaluationSystemPG1.abstracts.EntityDAO;
 import evaluationSystemPG1.abstracts.Option;
 import evaluationSystemPG1.db.HibernateUtil;
 import evaluationSystemPG1.entities.Alternative;
 import evaluationSystemPG1.entities.Question;
 import evaluationSystemPG1.entities.QuestionDAO;
 import evaluationSystemPG1.entities.Radiobutton;
+import evaluationSystemPG1.entities.Radiobutton1to6;
 import evaluationSystemPG1.entities.TextOption;
 
 public class HibernateTest {
@@ -24,31 +26,26 @@ public class HibernateTest {
 		q.setDate(new Date());
 		TextOption textOpt = new TextOption();
 		textOpt.setAnswerString("Det vet jag inte");
-		q.setIOption(textOpt);
-		QuestionDAO.saveQuestion(q);
+		q.setTextOption(textOpt);
+		QuestionDAO qDAO = QuestionDAO.getInstance(); 
+		qDAO.save(q);
 
 		Question q2 = new Question();
 		q2.setText("Detta är radiofrågan frågan");
 		q2.setDate(new Date());
-		Radiobutton radioOpt = new Radiobutton();
+		Radiobutton radioOpt = new Radiobutton1to6();
 		Set<Alternative> alts = new HashSet<Alternative>();
 		
-		addAltLabel("minst",alts);
-		addAltLabel("liten",alts);
-		addAltLabel("mitten",alts);
-		addAltLabel("stor",alts);
-		addAltLabel("större",alts);
-		addAltLabel("störst",alts);
 
-		radioOpt.setAlternatives(alts);
+		radioOpt.setAlternatives(radioOpt.getAlternatives());
 		radioOpt.setAnswer(3);
-		q2.setIOption(radioOpt);
-		QuestionDAO.saveQuestion(q2);
+		q2.setMultiOption(radioOpt);
+		qDAO.save(q2);
 
-		List<Question> questions = QuestionDAO.getAllQuestions();
+		List<Question> questions = qDAO.getAll();
 		for (Question question : questions) {
 			System.out.print(question.getText() + " Svar: ");
-			System.out.println(question.getIOption().getAnswerString());
+			System.out.println(question.getMultiOption().getAnswerString());
 		}
 	}
 
@@ -58,10 +55,5 @@ public class HibernateTest {
 		HibernateUtil.initHibernate(configFile);
 	}
 	
-	private static void addAltLabel(String s, Set<Alternative> altSet){
-		Alternative a = new Alternative();
-		a.setLabel(s);
-		altSet.add(a);
-	}
 
 }

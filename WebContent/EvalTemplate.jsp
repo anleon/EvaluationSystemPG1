@@ -18,33 +18,38 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Ny Utvärdering</title>
+		<title>Utvärdering :: KYH</title>
 		<link rel="stylesheet" type="text/css" href="main.css" />
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="jquery-1.4.2.min.js" ></script>
+		<script type="text/javascript" src="addAlternative.js" ></script>
 	</head>
 	<body>
-		<h1>Utvärdering KYH <a href="/login">Logga ut</a></h1>
-		<hr />
+		<h1>Utvärdering KYH <a href="/Login">Logga ut</a></h1>
 		<nav>
 			<ul>
-				<li><a href="">Utvärdering</a></li>
-				<li><a href="">Grupper</a></li>
+				<li><a href="Evaluations">Utvärdering</a></li>
+				<li><a href="Groups">Grupper</a></li>
 			</ul>
 		</nav>
-		<hr />
 		<form action="" method="post">
-			<input type="text" name="title" />
+			<input type="submit" name="publish" value="Publicera" />
+			<input type="submit" name="finish" value="Avsluta" />
 			
-			<select>
+			<label for="title">Titel</label>
+			<input type="text" id="title" name="title" />
+			
+			<label for="group">Grupp</label>
+			<select id="group" name="group">
 				<% for(Group g : gs) { %> 
-				<option name="<%= g.getId() %>"><%= g.getGroupName() %></option>
+				<option value="<%= g.getId() %>"><%= g.getGroupName() %></option>
 				<% } %>
 			</select>
 			
-			<input type="submit" name="" value="Skapa" />
-			<input type="submit" name="" value="Ändra" />
-			<input type="submit" name="" value="Ta bort" />
+			<input type="submit" name="create_section" value="Skapa sektion" />
+			<input type="submit" name="create_question" value="Skapa ny fråga" />
+			
+			<input type="submit" name="save_eval" value="Spara utvärdering" />
 		</form>
 	</body>
 </html>

@@ -1,36 +1,23 @@
 package evaluationSystemPG1.entities;
 
-import java.util.List;
+import evaluationSystemPG1.abstracts.EntityDAO;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
+public class QuestionDAO extends EntityDAO<Question> {
 
-import evaluationSystemPG1.db.HibernateUtil;
-
-public class QuestionDAO {
-	
-
-	public static List<Question> getAllQuestions(){
-		Session herbSession = HibernateUtil.getSession();
-		herbSession.beginTransaction();
-
-		Query query = herbSession.createQuery("from evaluationSystemPG1.entitys.Question");
-//		Query query = herbSession.createCriteria("from se.kyh.guestbook.entities.Post");
-		
-		herbSession.getTransaction().commit();
-		List<Question> posts = query.list();
-
-		return posts;
+	private QuestionDAO() {
 	}
 
-	public static void saveQuestion(Question question){
-		Session herbSession = HibernateUtil.getSession();
-		herbSession.beginTransaction();
-//		IOptionDAO.saveOption(question.getIOption());
-
-		herbSession.save(question);
-		
-		herbSession.getTransaction().commit();
+	/**
+	 * QuestionDAOHolder is loaded on the first execution of
+	 * QuestionDAO.getInstance() or the first access to QuestionDAOHolder.INSTANCE,
+	 * not before.
+	 */
+	private static class QuestionDAOHolder {
+		public static final QuestionDAO INSTANCE = new QuestionDAO();
 	}
+
+	public static QuestionDAO getInstance() {
+		return QuestionDAOHolder.INSTANCE;
+	}
+
 }
-

@@ -17,11 +17,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.UniqueConstraint;
 
 import evaluationSystemPG1.abstracts.Answer;
+import evaluationSystemPG1.abstracts.IEntity;
 import evaluationSystemPG1.abstracts.Option;
 
 @Entity(name = "radio_options")
 //@Inheritance(strategy=InheritanceType.JOINED)
-public class Radiobutton extends Option implements Serializable {
+public class Radiobutton extends Option implements Serializable,IEntity {
 
 	private static final long serialVersionUID = 4242256775914443344L;
 
