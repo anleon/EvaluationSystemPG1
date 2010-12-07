@@ -5,6 +5,7 @@ import evaluationSystemPG1.abstracts.EntitiesDAO;
 public class QuestionDAO extends EntitiesDAO<Question> {
 
 	private QuestionDAO() {
+		super(Question.class);
 	}
 
 	/**
@@ -19,5 +20,6 @@ public class QuestionDAO extends EntitiesDAO<Question> {
 	public static QuestionDAO getInstance() {
 		return QuestionDAOHolder.INSTANCE;
 	}
+
 
 }

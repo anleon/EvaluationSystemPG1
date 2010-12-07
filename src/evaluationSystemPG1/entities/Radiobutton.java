@@ -26,8 +26,6 @@ public class Radiobutton extends Option implements Serializable,IEntity {
 	private static final long serialVersionUID = 4242256775914443344L;
 
 	private int answer = 0;
-	@ManyToMany(cascade=CascadeType.ALL)
-	private Set<Alternative> alternatives; 
 	
 	public void setAnswer(int answer) {
 /*		if (answer < 0 || answer > alternatives.size()) {
@@ -41,17 +39,10 @@ public class Radiobutton extends Option implements Serializable,IEntity {
 		return answer;
 	}
 
-	public void setAlternatives(Set<Alternative> alternatives ) {
-		this.alternatives = alternatives;
-	}
-
-	public Set<Alternative> getAlternatives() {
-		return alternatives;
-	}
 
 	@Override
 	public String getAnswerString() {
-		return Integer.toString(answer+1);
+		return Integer.toString(answer);
 	}
 
 	@Override
