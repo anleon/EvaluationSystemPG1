@@ -1,4 +1,4 @@
-package evaluationSystemPG1.entitys;
+package evaluationSystemPG1.entities;
 
 import java.io.Serializable;
 

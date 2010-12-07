@@ -5,21 +5,23 @@ import java.util.List;
 import java.util.Set;
 
 
-import evaluationSystemPG1.abstracts.EntityDAO;
+import evaluationSystemPG1.abstracts.EntitiesDAO;
 import evaluationSystemPG1.abstracts.Option;
 import evaluationSystemPG1.db.HibernateUtil;
-import evaluationSystemPG1.entitys.Question;
-import evaluationSystemPG1.entitys.QuestionDAO;
-import evaluationSystemPG1.entitys.Alternative;
-import evaluationSystemPG1.entitys.Radiobutton;
-import evaluationSystemPG1.entitys.Radiobutton1to6;
-import evaluationSystemPG1.entitys.TextOption;
+import evaluationSystemPG1.entities.Alternative;
+import evaluationSystemPG1.entities.Question;
+import evaluationSystemPG1.entities.QuestionDAO;
+import evaluationSystemPG1.entities.Radiobutton;
+import evaluationSystemPG1.entities.Radiobutton1to6;
+import evaluationSystemPG1.entities.TextOption;
 
 public class HibernateTest {
 
 	public static void main(String[] arg) {
 		init();
+		
 		Question q = new Question();
+		//question text
 		q.setText("Vad är tredje frågan");
 		q.setDate(new Date());
 		TextOption textOpt = new TextOption();
@@ -32,11 +34,12 @@ public class HibernateTest {
 		q2.setText("Detta är radiofrågan frågan");
 		q2.setDate(new Date());
 		Radiobutton radioOpt = new Radiobutton1to6();
-		Set<Alternative> alts = new HashSet<Alternative>();
-		
-
-		radioOpt.setAlternatives(radioOpt.getAlternatives());
-		radioOpt.setAnswer(3);
+		try {
+			radioOpt.setAnswer(3);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		q2.setMultiOption(radioOpt);
 		qDAO.save(q2);
 

@@ -1,9 +1,9 @@
-package evaluationSystemPG1.entitys;
+package evaluationSystemPG1.entities;
 
-import evaluationSystemPG1.abstracts.EntityDAO;
-import evaluationSystemPG1.entitys.AlternativeDAO;
+import evaluationSystemPG1.abstracts.EntitiesDAO;
+import evaluationSystemPG1.entities.AlternativeDAO;
 
-public class AlternativeDAO extends EntityDAO<Alternative> {
+public class AlternativeDAO extends EntitiesDAO<Alternative> {
 	private AlternativeDAO() {
 	}
 
