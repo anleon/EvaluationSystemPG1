@@ -10,7 +10,10 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>EvaluationSystem</servlet-name>
-		<url-pattern>/admin/</url-pattern>
+		<url-pattern>/admin/*</url-pattern>
+		<url-pattern>/Admin/*</url-pattern>
+		<url-pattern>/admin</url-pattern>
+		<url-pattern>/Admin</url-pattern>
 	</servlet-mapping>
 
 

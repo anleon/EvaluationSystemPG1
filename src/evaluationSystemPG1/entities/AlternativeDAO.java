@@ -1,10 +1,12 @@
 package evaluationSystemPG1.entities;
 
-import evaluationSystemPG1.abstracts.EntityDAO;
+import evaluationSystemPG1.abstracts.EntitiesDAO;
 import evaluationSystemPG1.entities.AlternativeDAO;
 
-public class AlternativeDAO extends EntityDAO<Alternative> {
+public class AlternativeDAO extends EntitiesDAO<Alternative> {
+
 	private AlternativeDAO() {
+		super(Alternative.class);
 	}
 
 	/**
@@ -19,6 +21,17 @@ public class AlternativeDAO extends EntityDAO<Alternative> {
 	public static AlternativeDAO getInstance() {
 		return AlternativeDAOHolder.INSTANCE;
 	}
+
+/*
+ * Variation
+ * 
+ * 	@Override
+	protected Class<Alternative> myEntityClass() {
+		// TODO Auto-generated method stub
+		return Alternative.class;
+	}*/
+
+
 	
 }
 
