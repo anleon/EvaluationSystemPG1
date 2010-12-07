@@ -1,5 +1,39 @@
 @CHARSET "UTF-8";
 
-li {
+h1 a {
+	margin-right: 20px;
+	float: right;
+}
+
+nav li {
 	list-style-type: none;
+	display: inline;
+	margin-left: 20px;
+}
+	
+nav {
+	display: block;
+	border-top-color: gray;
+	border-style: groove;
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	margin-bottom: 20px;
+}
+
+input[type="submit"] {
+	margin-right: 10px;
+}
+
+input#title {
+	width: 220px;
+}
+
+body form {
+	padding-left: 40px; 
+}
+
+form div {
+	margin-bottom: 10px;
 }
