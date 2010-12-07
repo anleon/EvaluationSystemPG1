@@ -10,6 +10,6 @@ $(document).ready(function(){
 		var questionCounter = $('div[id^="question_div"]').length;
 		questionCounter++;
 		//console.log(this);
-		$('body').append('<div id="question_div'+questionCounter+'"><label for="question_lable'+questionCounter+'">Fråga '+questionCounter+':</label><input type="text" id="question'+questionCounter+'" name="question'+questionCounter+'" /><input type="submit" name="delete_question'+questionCounter+'" value="Ta bort" /></div>');
+		$('form').append('<div id="question_div'+questionCounter+'"><label for="question_lable'+questionCounter+'">Fråga '+questionCounter+':</label><input type="text" id="question'+questionCounter+'" name="question'+questionCounter+'" /><input type="submit" name="delete_question'+questionCounter+'" value="Ta bort" /></div>');
 	});
 });
