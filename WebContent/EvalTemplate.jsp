@@ -23,26 +23,30 @@
 	</head>
 	<body>
 		<h1>Utvärdering KYH <a href="/Login">Logga ut</a></h1>
-		<hr />
 		<nav>
 			<ul>
 				<li><a href="Evaluations">Utvärdering</a></li>
 				<li><a href="Groups">Grupper</a></li>
 			</ul>
 		</nav>
-		<hr />
 		<form action="" method="post">
-			<input type="text" name="title" />
+			<input type="submit" name="publish" value="Publicera" />
+			<input type="submit" name="finish" value="Avsluta" />
 			
-			<select>
+			<label for="title">Titel</label>
+			<input type="text" id="title" name="title" />
+			
+			<label for="group">Grupp</label>
+			<select id="group" name="group">
 				<% for(Group g : gs) { %> 
 				<option value="<%= g.getId() %>"><%= g.getGroupName() %></option>
 				<% } %>
 			</select>
 			
-			<input type="submit" name="" value="Skapa" />
-			<input type="submit" name="" value="Ändra" />
-			<input type="submit" name="" value="Ta bort" />
+			<input type="submit" name="create_section" value="Skapa sektion" />
+			<input type="submit" name="create_question" value="Skapa ny fråga" />
+			
+			<input type="submit" name="save_eval" value="Spara utvärdering" />
 		</form>
 	</body>
 </html>
