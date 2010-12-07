@@ -20,8 +20,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Utvärdering :: KYH</title>
 		<link rel="stylesheet" type="text/css" href="main.css" />
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-		<script type="text/javascript" src="jquery-1.4.2.min.js" ></script>
+		<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="addAlternative.js" ></script>
 	</head>
 	<body>
@@ -46,8 +45,8 @@
 				<% } %>
 			</select>
 			
-			<input type="submit" name="create_section" value="Skapa sektion" />
-			<input type="submit" name="create_question" value="Skapa ny fråga" />
+			<input type="button" name="create_section" value="Skapa sektion" />
+			<input type="button" name="create_question" value="Skapa ny fråga" />
 			
 			<input type="submit" name="save_eval" value="Spara utvärdering" />
 		</form>
