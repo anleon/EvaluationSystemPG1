@@ -11,6 +11,7 @@
 		Group gg = new Group();
 		gg.setGroupName("AD10");
 		gs.add(gg);
+
 	// End temporary test code
 %>
 
@@ -36,9 +37,9 @@
 			<input type="text" name="title" />
 			
 			<select>
-				<% //for(Group g : gs) { %> 
-				<option name="<% //g.getId() %>"><% // g.getGroupName() %></option>
-				<% //} %>
+				<% for(Group g : gs) { %> 
+				<option name="<%= g.getId() %>"><%= g.getGroupName() %></option>
+				<% } %>
 			</select>
 			
 			<input type="submit" name="" value="Skapa" />
