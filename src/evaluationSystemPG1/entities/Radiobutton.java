@@ -21,36 +21,28 @@ import evaluationSystemPG1.abstracts.IEntity;
 import evaluationSystemPG1.abstracts.Option;
 
 @Entity(name = "radio_options")
-//@Inheritance(strategy=InheritanceType.JOINED)
 public class Radiobutton extends Option implements Serializable,IEntity {
 
 	private static final long serialVersionUID = 4242256775914443344L;
 
-	private int answer;
-	private final int numberOfAlternatives = 5;
-	
-	@ManyToMany(cascade=CascadeType.ALL)
-	private Set<Alternative> alternatives; 
+	private int answer = 0;
 	
 	public void setAnswer(int answer) {
+/*		if (answer < 0 || answer > alternatives.size()) {
+			System.out.println("answer out of bound");
+		} else {*/
 		this.answer = answer;
+		//}
 	}
 
 	public int getAnswer() {
 		return answer;
 	}
 
-	public void setAlternatives(Set<Alternative> alternatives ) {
-		this.alternatives = alternatives;
-	}
-
-	public Set<Alternative> getAlternatives() {
-		return alternatives;
-	}
 
 	@Override
 	public String getAnswerString() {
-		return Integer.toString(answer+1);
+		return Integer.toString(answer);
 	}
 
 	@Override
