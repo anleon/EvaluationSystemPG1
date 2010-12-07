@@ -6,7 +6,6 @@ h1 a {
 }
 
 nav li {
-	list-style-type: none;
 	display: inline;
 	margin-left: 20px;
 }
@@ -22,12 +21,12 @@ nav {
 	margin-bottom: 20px;
 }
 
-input[type="submit"] {
-	margin-right: 10px;
+li {
+	list-style-type: none;
 }
 
-input#title {
-	width: 220px;
+fieldset {
+	border-style: none; 
 }
 
 body form {
@@ -36,4 +35,22 @@ body form {
 
 form div {
 	margin-bottom: 10px;
+}
+
+
+input[type="submit"] {
+	margin-right: 10px;
+}
+
+input#title {
+	width: 220px;
+}
+
+div.question textarea {
+	width: 340px;
+	height: 100px;
+}
+
+input[type="image"] {
+	vertical-align : text-bottom;
 }
