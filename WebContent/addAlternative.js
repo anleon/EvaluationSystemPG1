@@ -2,13 +2,13 @@
  * 
  */
 $(document).ready(function(){
-	var labelTag = '<label></label>';
-	var inputTextTag = '<input type="text" />';
-	var inputButtonTag = '<input type="button" />';
-	var inputSubmitTag = '<input type="submit" />';
-	var inputCheckboxTag = '<input type="checkbox" />';
-	var inputRadioTag = '<input type="radio" />';
-	var divTag = '<div></div>';
+//	var labelTag = '<label></label>';
+//	var inputTextTag = '<input type="text" />';
+//	var inputButtonTag = '<input type="button" />';
+//	var inputSubmitTag = '<input type="submit" />';
+//	var inputCheckboxTag = '<input type="checkbox" />';
+//	var inputRadioTag = '<input type="radio" />';
+//	var divTag = '<div></div>';
 	var sectionCounter = 0;
 	var questionCounter = 0;
 	var idAttr = '';
@@ -20,18 +20,14 @@ $(document).ready(function(){
 			sectionCounter = idAttr.slice(11);
 			sectionCounter++;
 		}
-		console.log(sectionCounter);
+		//console.log(sectionCounter);
 		$('form').append('<div id="section_div'+sectionCounter+'"></div>');
 		$('form #section_div'+sectionCounter).append('<label for="section_title'+sectionCounter+'">Sektions titel '+sectionCounter+'</label>');
 		$('form #section_div'+sectionCounter).append('<input type="text" id="section_title'+sectionCounter+'" name="section_title'+sectionCounter+'" />');
 		$('form #section_div'+sectionCounter).append('<input type="submit" name="delete_section'+sectionCounter+'" value="Ta bort" />');
 		$('form #section_div'+sectionCounter).append('<label for="section_description'+sectionCounter+'">Sektions beskrivning</label>');
-		$('form #section_div'+sectionCounter).append('<input type="text" id="section_description'+sectionCounter+'" name="section_description'+sectionCounter+'" />');
+		$('form #section_div'+sectionCounter).append('<textarea type="text" id="section_description'+sectionCounter+'" name="section_description'+sectionCounter+'"></textarea>');
 		
-//		labelTag = $(labelTag).attr('for','section_title"+sectionCounter+"').text('Sektions titel "+sectionCounter+"');
-		//$(inputTextTag).attr();
-		//$(divTag).append(labelTag);
-//		$('form').append('<div id="section_div'+sectionCounter+'"><label for="section_title">Sektions titel'+sectionCounter+'</label><input type="text" id="section_title" name="section_title" /><input type="submit" name="delete_section" value="Ta bort" /><label for="section_description">Sektions beskrivning</label><input type="text" id="section_description" name="section_description" /></div>');
 	});
 	$('input[name="create_question"]').click(function(idAttr) {
 		idAttr = $('div[id^="question_div"]').last().attr('id');
