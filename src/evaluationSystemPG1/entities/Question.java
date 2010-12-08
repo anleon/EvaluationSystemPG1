@@ -1,21 +1,18 @@
 package evaluationSystemPG1.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.Cascade;
 
 import evaluationSystemPG1.abstracts.IEntity;
 import evaluationSystemPG1.abstracts.Option;
@@ -31,11 +28,12 @@ public class Question implements Serializable,IEntity{
 	private String text;
 	private Date date;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private TextOption textOption;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "text_option_id")
+	private List<TextOptionAnswer> textOption; 
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private Option MultiOption;
+	private Option multiOption;
 	
 	public String getText() {
 		return text;
@@ -53,7 +51,7 @@ public class Question implements Serializable,IEntity{
 		this.date = date;
 	}
 
-	private void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -61,20 +59,20 @@ public class Question implements Serializable,IEntity{
 		return id;
 	}
 
-	public void setTextOption(TextOption option) {
-		this.textOption = option;
-	}
-
-	public TextOption getTextOption() {
-		return textOption;
-	}
-
 	public void setMultiOption(Option multiOption) {
-		MultiOption = multiOption;
+		this.multiOption = multiOption;
 	}
 
 	public Option getMultiOption() {
-		return MultiOption;
+		return multiOption;
+	}
+
+	public void setTextOption(List<TextOptionAnswer> textOption) {
+		this.textOption = textOption;
+	}
+
+	public List<TextOptionAnswer> getTextOption() {
+		return textOption;
 	}
 
 }

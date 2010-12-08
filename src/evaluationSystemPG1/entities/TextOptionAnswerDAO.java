@@ -7,9 +7,9 @@ import org.hibernate.Session;
 
 import evaluationSystemPG1.db.HibernateUtil;
 
-public class TextOptionDAO {
+public class TextOptionAnswerDAO {
 
-	public static List<TextOption> getAllTextOptions(){
+	public static List<TextOptionAnswer> getAllTextOptions(){
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
 
@@ -17,12 +17,12 @@ public class TextOptionDAO {
 //		Query query = herbSession.createCriteria("from se.kyh.guestbook.entities.Post");
 		
 		herbSession.getTransaction().commit();
-		List<TextOption> textOptions = query.list();
+		List<TextOptionAnswer> textOptions = query.list();
 
 		return textOptions;
 	}
 
-	public static void saveOption(TextOption textOption){
+	public static void saveOption(TextOptionAnswer textOption){
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
 
