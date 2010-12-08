@@ -43,24 +43,34 @@ $(document).ready(function(){
 			.append('<fieldset></fieldset>');
 		var question_div_fieldset = $('#question_div_'+qC+' fieldset');
 		question_div_fieldset
-			.append('<input type="checkbox" id="free_text_'+qC+'" name="option_types_'+qC+'" checked="checked" />')
+			.append('<input type="checkbox" id="mandatory_'+qC+'" name="option_types_'+qC+'" checked="checked" value="Obligatorisk"/>')
+			.append('<label for="free_text_'+qC+'">Obligatorisk</label>')
+			.append('<input type="checkbox" id="free_text_'+qC+'" name="option_types_'+qC+'" checked="checked" value="Fri text"/>')
 			.append('<label for="free_text_'+qC+'">Fri text</label>')
-			.append('<input type="checkbox" id="alternatives_'+qC+'" name="option_types_'+qC+'" checked="checked" />')
-			.append('<label for="alternatives_'+qC+'">Fritext</label>');
+			.append('<input type="checkbox" id="alternatives_'+qC+'" name="option_types_'+qC+'" checked="checked" value="Fasta alternativ"/>')
+			.append('<label for="alternatives_'+qC+'">Fasta alternativ</label>');
 		
 		//Single choice alternatives
 		question_div.append('<fieldset></fieldset>');
 		var single_choice_alt = $('#question_div_'+qC+' fieldset:last');
+		
+		var multiple_choice = $('<input type="radio" id="multiple_choice_'+qC+'" name="option_type_'+qC+'" value="Flerval" />');
+		//Shows/hides Description of choice alternatives on change
+		multiple_choice.change(function() {
+			$(this).parent().next().toggleClass('visible');
+			return false;
+		});
+		
 		single_choice_alt
 			.append('<input type="radio" id="single_choice_'+qC+'" name="option_type_'+qC+'" value="Enval" />')
 			.append('<label for="single_choice_'+qC+'">Enval</label>')
-			.append('<input type="radio" id="multiple_choice_'+qC+'" name="option_type_'+qC+'" value="Flerval" />')
+			.append(multiple_choice)
 			.append('<label for="multiple_choice_'+qC+'">Flerval</label>')
 			.append('<input type="radio" id="scale_'+qC+'" name="option_type_'+qC+'" checked="checked" value="1-6" />')
 			.append('<label for="scale_'+qC+'">1-6</label>');
 		
 		//Description of choice alternatives
-		question_div.append('<h5>Beskrivning av Alternativen</h5><fieldset><ul><li></li><li></li></ul></fieldset>');
+		question_div.append('<fieldset class="alt_description"><legend>Beskrivning av Alternativen</legend><ul><li></li><li></li></ul></fieldset>');
 		var first_alt_description = $('#question_div_'+qC+' fieldset:last li:first');
 		first_alt_description
 			.append('<input type="text" id="alt_description_'+qC+'_1" name="alt_description_'+qC+'_1" />')
@@ -71,12 +81,13 @@ $(document).ready(function(){
 			.append('<input type="image" id="delete_alt_'+qC+'_2" name="delete_alt_'+qC+'_2" src="delete.jpg" alt="Ta bort" />');
 		
 		$('#question_div_'+qC+' fieldset:last').append('<input type="image" id="add_alt_'+qC+'" name="add_alt_'+qC+'" src="add.jpg" alt="Lägg till" />');
+	
 	});
 	
 	// Delete Alternative Description
 	$('input[name^="delete_"]').live('click',function() {
 		$(this).parent().remove();
-		console.log($(this));
+		//console.log($(this));
 	});
 	
 	// Add Alternative Description
@@ -85,7 +96,7 @@ $(document).ready(function(){
 		last_alt
 			.append('<input type="text" id="alt_description_'+qC+'_2" name="alt_description_'+qC+'_2" />')
 			.append('<input type="image" id="delete_alt_'+qC+'_2" name="delete_alt_'+qC+'_2" src="delete.jpg" alt="Ta bort" />');
-		
+		return false;
 	});
 	
 });

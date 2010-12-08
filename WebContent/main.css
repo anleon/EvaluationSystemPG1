@@ -80,3 +80,11 @@ div.question textarea, div.section textarea{
 input[type="image"] {
 	vertical-align : text-bottom;
 }
+
+.alt_description {
+	display:none;
+}
+
+.visible {
+	display:block;
+}
