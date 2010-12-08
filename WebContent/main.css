@@ -38,15 +38,41 @@ form div {
 }
 
 
-input[type="submit"] {
-	margin-right: 10px;
+label, 
+textarea, 
+input[type="submit"], 
+input[type="text"],
+input[type="button"], 
+div#title_div {
+	margin-right: 20px;
 }
 
-input#title {
+input.title {
+	width: 200px;
+}
+
+div {
+ 	float: left;
+ 	clear: both;
+}
+
+div#title_div {
 	width: 220px;
+ 	float: left;
+ 	clear: left;
 }
 
-div.question textarea {
+div#group_div {
+ 	float: left;
+ 	clear: right;
+ 	width: 60px;
+}
+
+label, input {
+	float:left;
+}
+
+div.question textarea, div.section textarea{
 	width: 340px;
 	height: 100px;
 }

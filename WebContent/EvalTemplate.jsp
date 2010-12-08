@@ -32,23 +32,33 @@
 			</ul>
 		</nav>
 		<form action="" method="post">
-			<input type="submit" name="publish" value="Publicera" />
-			<input type="submit" name="finish" value="Avsluta" />
+			<div id="status">
+				<input type="submit" name="publish" value="Publicera" />
+				<input type="submit" name="finish" value="Avsluta" />
+			</div>
 			
-			<label for="title">Titel</label>
-			<input type="text" id="title" name="title" />
+			<div id="title_div">
+				<label for="title">Titel</label>
+				<input type="text" id="title" class="title" name="title" />
+			</div>
 			
-			<label for="group">Grupp</label>
-			<select id="group" name="group">
-				<% for(Group g : gs) { %> 
-				<option value="<%= g.getId() %>"><%= g.getGroupName() %></option>
-				<% } %>
-			</select>
+			<div id="group_div">
+				<label for="group">Grupp</label>
+				<select id="group" name="group">
+					<% for(Group g : gs) { %> 
+					<option value="<%= g.getId() %>"><%= g.getGroupName() %></option>
+					<% } %>
+				</select>
+			</div>
 			
-			<input type="button" name="create_section" value="Skapa sektion" />
-			<input type="button" name="create_question" value="Skapa ny fråga" />
+			<div id="create">
+				<input type="button" name="create_section" value="Skapa sektion" />
+				<input type="button" name="create_question" value="Skapa ny fråga" />
+			</div>
 			
-			<input type="submit" name="save_eval" value="Spara utvärdering" />
+			<div id="save">
+				<input type="submit" name="save_eval" value="Spara utvärdering" />
+			</div>
 		</form>
 	</body>
 </html>
