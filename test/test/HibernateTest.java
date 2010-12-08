@@ -6,19 +6,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import evaluationSystemPG1.abstracts.EntitiesDAO;
 import evaluationSystemPG1.abstracts.Option;
 import evaluationSystemPG1.db.HibernateUtil;
 import evaluationSystemPG1.entities.Alternative;
+import evaluationSystemPG1.entities.CheckboxPanel;
+import evaluationSystemPG1.entities.CheckboxPanelAnswer;
 import evaluationSystemPG1.entities.Question;
 import evaluationSystemPG1.entities.QuestionDAO;
 import evaluationSystemPG1.entities.Radiobutton;
+import evaluationSystemPG1.entities.RadiobuttonAnswer;
 import evaluationSystemPG1.entities.RadiobuttonDAO;
-import evaluationSystemPG1.entities.TextOption;
+import evaluationSystemPG1.entities.TextOptionAnswer;
 
 public class HibernateTest {
 
@@ -28,9 +28,9 @@ public class HibernateTest {
 		// FRÅGA 1
 		Question q = new Question();
 		// question text
-		q.setText("Vad är tredje frågan");
+		q.setText("AAAAAAAAAAAAAAAAAAAAAA");
 		q.setDate(new Date());
-		TextOption textOpt = new TextOption();
+		List <TextOptionAnswer> textOpt = new ArrayList<TextOptionAnswer>();
 		q.setTextOption(textOpt);
 		Radiobutton radioOpt1 = RadiobuttonDAO.getRadiobutton1to6();
 		q.setMultiOption(radioOpt1);
@@ -39,9 +39,9 @@ public class HibernateTest {
 
 		// Fråga 2
 		Question q2 = new Question();
-		q2.setText("Detta är frågan2");
+		q2.setText("BBBBBBBBBBBBBBBBBBBBBBB");
 		q2.setDate(new Date());
-		textOpt = new TextOption();
+		//textOpt = new TextOption();
 		// q2.setTextOption(textOpt);
 		Radiobutton radioOpt2 = new Radiobutton();
 		List<Alternative> alternatives = new ArrayList<Alternative>();
@@ -59,12 +59,35 @@ public class HibernateTest {
 
 		qDAO.save(q2);
 
+		//Fråga 3
+		Question question3 = new Question();
+		question3.setText("CCCCCCCCCCCCCCCCCCCC");
+		question3.setDate(new Date());
+		List <TextOptionAnswer> textOpt3 = new ArrayList<TextOptionAnswer>();
+		question3.setTextOption(textOpt3);
+		CheckboxPanel checkbox = new CheckboxPanel();
+		
+		List<Alternative> alternatives2 = new ArrayList<Alternative>();
+		Alternative alternative21 = new Alternative();
+		alternative21.setLabel("regn");
+		alternatives2.add(alternative21);
+		Alternative alternative22 = new Alternative();
+		alternative22.setLabel("mulet");
+		alternatives2.add(alternative22);
+		Alternative alternative23 = new Alternative();
+		alternative23.setLabel("Sol");
+		alternatives2.add(alternative23);
+		checkbox.setAlternatives(alternatives2);
+		question3.setMultiOption(checkbox);
+		qDAO.save(question3);
+		
 		List<Question> questions = qDAO.getAll();
+		int i = 0;
 		for (Question question : questions) {
-			System.out.println("Fråga 1");
+			System.out.println("Fråga "+i);
+			i++;
 			System.out.println(question.getText() + ":");
-			System.out.print(question.getMultiOption().getAlternativesString()
-					+ " Svar Textoption: ");
+			System.out.print(question.getMultiOption().getAlternativesString());
 			if (question.getTextOption() != null) {
 				System.out.println("Fritext svar: ");
 				String freeTextAnswer = "";
@@ -76,7 +99,9 @@ public class HibernateTest {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				question.getTextOption().setAnswerString(freeTextAnswer);
+				TextOptionAnswer tAnswer = new TextOptionAnswer();
+				tAnswer.setAnswerString(freeTextAnswer);
+				question.getTextOption().add(tAnswer);
 			}
 			if (question.getMultiOption() != null) {
 				Option option = question.getMultiOption();
@@ -90,14 +115,41 @@ public class HibernateTest {
 						try {
 							radiobuttonAnswer = br.readLine();
 							int radioAnsInt = Integer.parseInt(radiobuttonAnswer);
-							radio.setAnswer(radioAnsInt);
+							RadiobuttonAnswer rAnswer = new RadiobuttonAnswer();
+							rAnswer.setAnswer(radioAnsInt);
+							radio.getAnswer().add(rAnswer);
 							break;
 						} catch (Exception e) {
 							System.out.println("Enter numeric value ");
 						}
 					}
 				}
+				if (option instanceof CheckboxPanel) {
+					CheckboxPanel check = (CheckboxPanel) option;
+					System.out.println("CheckboxPanel svar: ");
+					String checkboxPanelAnswer = "";
+					BufferedReader br = new BufferedReader(
+							new InputStreamReader(System.in));
+					while (true) {
+						try {
+							checkboxPanelAnswer = br.readLine();
+							String[] answerArray = checkboxPanelAnswer.split(";");
+							List<CheckboxPanelAnswer> checkAnsInt = new ArrayList<CheckboxPanelAnswer>();
+							for (String answer : answerArray){
+								CheckboxPanelAnswer checkboxAnswer = new CheckboxPanelAnswer();
+								checkboxAnswer.setValue(Integer.parseInt(answer)); 	
+								checkAnsInt.add(checkboxAnswer);
+							}
+							check.setAnswer(checkAnsInt);
+							break;
+						} catch (Exception e) {
+							System.out.println("Enter numeric value ");
+						}
+					}
+				}
+
 			}
+			qDAO.save(question);
 		}
 	}
 

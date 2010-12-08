@@ -26,7 +26,6 @@ public abstract class Option {
 	private List<Alternative> alternatives; 
 
 	public abstract String getAnswerString();
-	public abstract void setAnswer(Answer answer);
 
 	public void setId(int id) {
 		this.id = id;

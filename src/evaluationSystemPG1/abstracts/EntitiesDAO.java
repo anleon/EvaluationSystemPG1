@@ -57,7 +57,8 @@ public abstract class EntitiesDAO<T extends IEntity > {
 		
 		herbSession.getTransaction().commit();
 	}
-
+	
+	
 //Variation 	
 	
 //	protected abstract Class<T> myEntityClass();

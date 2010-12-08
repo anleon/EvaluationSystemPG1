@@ -1,20 +1,16 @@
 package evaluationSystemPG1.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.annotation.*;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.OneToMany;
+
+import org.hibernate.mapping.Array;
+
 
 import evaluationSystemPG1.abstracts.Answer;
 import evaluationSystemPG1.abstracts.IEntity;
@@ -24,30 +20,26 @@ import evaluationSystemPG1.abstracts.Option;
 public class Radiobutton extends Option implements Serializable,IEntity {
 
 	private static final long serialVersionUID = 4242256775914443344L;
-
-	private int answer = 0;
 	
-	public void setAnswer(int answer) {
-/*		if (answer < 0 || answer > alternatives.size()) {
-			System.out.println("answer out of bound");
-		} else {*/
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "radio_option_id")
+	private List<RadiobuttonAnswer> answer = new ArrayList<RadiobuttonAnswer>();
+
+	public void setAnswer(List<RadiobuttonAnswer> answer) {
 		this.answer = answer;
-		//}
 	}
 
-	public int getAnswer() {
+	public List<RadiobuttonAnswer> getAnswer() {
 		return answer;
 	}
 
-
 	@Override
 	public String getAnswerString() {
-		return Integer.toString(answer);
-	}
-
-	@Override
-	public void setAnswer(Answer answer) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
+	
+
+
+
 }
