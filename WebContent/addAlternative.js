@@ -17,9 +17,17 @@ $(document).ready(function(){
 		$('form').append('<div class="section" id="section_div_'+sC+'"></div>');
 		var section_div = $('#section_div_'+sC);
 		section_div
+			.append('<div class="section_row_1" id="section_'+sC+'_row_1"></div>')
+			.append('<div class="section_row_2" id="section_'+sC+'_row_2"></div>');
+		//Section row 1
+		var section_row_1 = $('#section_div_'+sC+' #section_'+sC+'_row_1');
+		section_row_1
 			.append('<label for="section_title_'+sC+'">Sektions titel '+sC+'</label>')
-			.append('<input type="text" id="section_title_'+sC+'" name="section_title_'+sC+'" />')
-			.append('<input type="button" name="delete_section_'+sC+'" value="Ta bort" />')
+			.append('<input class="title" type="text" id="section_title_'+sC+'" name="section_title_'+sC+'" />')
+			.append('<input type="button" name="delete_section_'+sC+'" value="Ta bort" />');
+		//Section row 2
+		var section_row_2 = $('#section_div_'+sC+' #section_'+sC+'_row_2');
+		section_row_2
 			.append('<label for="section_description_'+sC+'">Sektions beskrivning</label>')
 			.append('<textarea type="text" id="section_description_'+sC+'" name="section_description_'+sC+'"></textarea>');
 		
@@ -55,7 +63,17 @@ $(document).ready(function(){
 		var single_choice_alt = $('#question_div_'+qC+' fieldset:last');
 		
 		var multiple_choice = $('<input type="radio" id="multiple_choice_'+qC+'" name="option_type_'+qC+'" value="Flerval" />');
-		//Shows/hides Description of choice alternatives on change
+		//Shows/hides Description of choice alternatives on change 
+		//FIXME
+//		$("input[@name='rdio']").change(function(){
+//		    if ($("input[@name='rdio']:checked").val() == 'a')
+//		        // Code for handling value 'a'
+//		    else if ($("input[@name='rdio']:checked").val() == 'b')
+//		        // Code for handling value 'b'
+//		    else
+//		        // Code for handling 'c'
+//		});
+
 		multiple_choice.change(function() {
 			$(this).parent().next().toggleClass('visible');
 			return false;

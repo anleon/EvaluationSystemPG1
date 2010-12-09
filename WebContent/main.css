@@ -42,13 +42,13 @@ label,
 textarea, 
 input[type="submit"], 
 input[type="text"],
-input[type="button"], 
-div#title_div {
+input[type="button"] {
 	margin-right: 20px;
 }
 
 input.title {
-	width: 200px;
+	clear: left;
+	width: 340px;
 }
 
 div {
@@ -56,10 +56,14 @@ div {
  	clear: both;
 }
 
-div#title_div {
-	width: 220px;
+div#title_div,
+div[class^="section_row_"] {
  	float: left;
  	clear: left;
+}
+
+input[name^="delete_section_"]{
+	float: right;
 }
 
 div#group_div {
@@ -72,7 +76,10 @@ label, input {
 	float:left;
 }
 
-div.question textarea, div.section textarea{
+div.question textarea, 
+div.section div[class^="section_row_"] textarea{
+	clear: left;
+	float: left;
 	width: 340px;
 	height: 100px;
 }
