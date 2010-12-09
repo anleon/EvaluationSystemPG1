@@ -1,13 +1,18 @@
 package evaluationSystemPG1.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import evaluationSystemPG1.abstracts.IEntity;
 
@@ -22,7 +27,10 @@ public class CheckboxPanelAnswer implements Serializable, IEntity {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
-	private int value;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "checkbox_answer")
+	private List<CheckBoxValue> values = new ArrayList<CheckBoxValue>();;
 	
 	public int getId() {
 		return id;
@@ -30,11 +38,11 @@ public class CheckboxPanelAnswer implements Serializable, IEntity {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getValue() {
-		return value;
+	public void setValues(List<CheckBoxValue> values) {
+		this.values = values;
 	}
-	public void setValue(int value) {
-		this.value = value;
+	public List<CheckBoxValue> getValues() {
+		return values;
 	}
 
 	/*	public void setChekbox(CheckboxPanel chekbox) {

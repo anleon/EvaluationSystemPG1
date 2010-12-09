@@ -23,14 +23,13 @@ public class Question implements Serializable,IEntity{
 	private static final long serialVersionUID = 544334524525425L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String text;
 	private Date date;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "text_option_id")
-	private List<TextOptionAnswer> textOption; 
+	@OneToOne(cascade = CascadeType.ALL)
+	private TextOption textOption; 
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Option multiOption;
@@ -67,12 +66,11 @@ public class Question implements Serializable,IEntity{
 		return multiOption;
 	}
 
-	public void setTextOption(List<TextOptionAnswer> textOption) {
+	public void setTextOption(TextOption textOption) {
 		this.textOption = textOption;
 	}
 
-	public List<TextOptionAnswer> getTextOption() {
+	public TextOption getTextOption() {
 		return textOption;
 	}
-
 }
