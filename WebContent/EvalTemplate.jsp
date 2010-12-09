@@ -31,7 +31,7 @@
 				<li><a href="Groups">Grupper</a></li>
 			</ul>
 		</nav>
-		<form action="" method="post">
+		<form action="" method="get">
 			<div id="status">
 				<input type="submit" name="publish" value="Publicera" />
 				<input type="submit" name="finish" value="Avsluta" />
