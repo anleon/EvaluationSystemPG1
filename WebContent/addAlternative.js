@@ -2,15 +2,20 @@
  * 
  */
 $(document).ready(function(){
-	var sC = 0;
+	// SectionCounter and QuestionCounter respectively.
+	// "section_div_" är 12 bokstäver
+	// "question_div_" är 13 bokstäver
+	var sC = 0; 
 	var qC = 0;
+	var section_id_length = 12;
+	var question_id_length = 13;
 	var idAttr = '';
 	$('input[name="create_section"]').click(function(labelTag,inputTextTag,inputButtonTag,inputSubmitTag,divTag,sC,idAttr) {
 		idAttr = $('div[id^="section_div"]').last().attr('id');
 		if(idAttr == undefined){
 			sC = 1;
 		}else{
-			sC = idAttr.slice(12);
+			sC = idAttr.slice(section_id_length);
 			sC++;
 		}
 		//Section
@@ -29,7 +34,7 @@ $(document).ready(function(){
 		if(idAttr == undefined){
 			qC = 1;
 		}else{
-			qC = idAttr.slice(13);
+			qC = idAttr.slice(question_id_length);
 			qC++;
 		}
 		//Question
@@ -42,32 +47,57 @@ $(document).ready(function(){
 		//Multiple choice alternatives
 			.append('<fieldset></fieldset>');
 		var question_div_fieldset = $('#question_div_'+qC+' fieldset');
+		
+		var multiple_choice = $('<input type="checkbox" id="alternatives_'+qC+'" name="option_types_'+qC+'" value="Fasta alternativ" checked="checked" />');
+		
+		// Shows/hides Description of choice alternatives on change.
+		// Also change the choice alternatives to editable/non-editable.
+		multiple_choice.change(function() {
+			var radio_scale1to6 = $(this).parent().next().find('input.scale1to6');
+			var isChecked = $(this).attr('checked');
+			var isRadioSelected = $(radio_scale1to6).attr('checked');
+			if (isChecked) {
+				$(radio_scale1to6).parent().children('input').attr('disabled','');
+			} else {
+				$(radio_scale1to6).parent().children('input').attr('disabled','disabled');	
+			}
+			if (isChecked && !isRadioSelected) {
+				$(radio_scale1to6).parent().next().addClass('visible');
+			} else {
+				$(radio_scale1to6).parent().next().removeClass('visible');
+			}
+			return false;
+		});
+		
 		question_div_fieldset
 			.append('<input type="checkbox" id="mandatory_'+qC+'" name="option_types_'+qC+'" checked="checked" value="Obligatorisk"/>')
 			.append('<label for="free_text_'+qC+'">Obligatorisk</label>')
 			.append('<input type="checkbox" id="free_text_'+qC+'" name="option_types_'+qC+'" checked="checked" value="Fri text"/>')
 			.append('<label for="free_text_'+qC+'">Fri text</label>')
-			.append('<input type="checkbox" id="alternatives_'+qC+'" name="option_types_'+qC+'" checked="checked" value="Fasta alternativ"/>')
+			.append(multiple_choice)
 			.append('<label for="alternatives_'+qC+'">Fasta alternativ</label>');
 		
 		//Single choice alternatives
 		question_div.append('<fieldset></fieldset>');
 		var single_choice_alt = $('#question_div_'+qC+' fieldset:last');
-		
-		var multiple_choice = $('<input type="radio" id="multiple_choice_'+qC+'" name="option_type_'+qC+'" value="Flerval" />');
-		//Shows/hides Description of choice alternatives on change
-		multiple_choice.change(function() {
-			$(this).parent().next().toggleClass('visible');
-			return false;
-		});
-		
 		single_choice_alt
 			.append('<input type="radio" id="single_choice_'+qC+'" name="option_type_'+qC+'" value="Enval" />')
 			.append('<label for="single_choice_'+qC+'">Enval</label>')
-			.append(multiple_choice)
+			.append('<input type="radio" id="multiple_choice_'+qC+'" name="option_type_'+qC+'" value="Flerval" />')
 			.append('<label for="multiple_choice_'+qC+'">Flerval</label>')
-			.append('<input type="radio" id="scale_'+qC+'" name="option_type_'+qC+'" checked="checked" value="1-6" />')
+			.append('<input type="radio" class="scale1to6" id="scale_'+qC+'" name="option_type_'+qC+'" checked="checked" value="1-6" />')
 			.append('<label for="scale_'+qC+'">1-6</label>');
+		
+		// Shows/hides Description of choice alternatives on change. 
+		single_choice_alt.find('input').change(function() {
+			var isScaleSelected = $(this).attr('checked') && $(this).hasClass('scale1to6');
+			if (!isScaleSelected) {
+				$(this).parent().next().addClass('visible');
+			} else {
+				$(this).parent().next().removeClass('visible');
+			}
+			return false;
+		});
 		
 		//Description of choice alternatives
 		question_div.append('<fieldset class="alt_description"><legend>Beskrivning av Alternativen</legend><ul><li></li><li></li></ul></fieldset>');
