@@ -8,11 +8,13 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 import evaluationSystemPG1.abstracts.Option;
 import evaluationSystemPG1.entities.Alternative;
+import evaluationSystemPG1.entities.CheckBoxValue;
 import evaluationSystemPG1.entities.CheckboxPanel;
 import evaluationSystemPG1.entities.CheckboxPanelAnswer;
 import evaluationSystemPG1.entities.Question;
 import evaluationSystemPG1.entities.Radiobutton;
 import evaluationSystemPG1.entities.RadiobuttonAnswer;
+import evaluationSystemPG1.entities.TextOption;
 import evaluationSystemPG1.entities.TextOptionAnswer;
 
 public class HibernateUtil {
@@ -30,6 +32,9 @@ public class HibernateUtil {
 	    												.addAnnotatedClass(Alternative.class)
 	    												.addAnnotatedClass(CheckboxPanel.class)
 	    												.addAnnotatedClass(CheckboxPanelAnswer.class)
+	    												.addAnnotatedClass(CheckBoxValue.class)
+	    												.addAnnotatedClass(TextOption.class)	    												.addAnnotatedClass(CheckboxPanelAnswer.class)
+	    												
 	    												.configure(configFile);
 	    		sessionFactory = annotationConfiguration.buildSessionFactory();
 	    	}
