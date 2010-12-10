@@ -10,7 +10,7 @@ $(document).ready(function(){
 	var section_id_length = 12;
 	var question_id_length = 13;
 	var idAttr = '';
-	$('input[name="create_section"]').click(function(labelTag,inputTextTag,inputButtonTag,inputSubmitTag,divTag,sectionCounter,idAttr) {
+	$('input[name="create_section"]').click(function() {
 		idAttr = $('div[id^="section_div"]').last().attr('id');
 		if(idAttr == undefined){
 			sectionCounter = 1;
@@ -28,16 +28,16 @@ $(document).ready(function(){
 		var section_row_1 = $('#section_div_'+sectionCounter+' #section_'+sectionCounter+'_row_1');
 		section_row_1
 			.append('<label for="section_title_'+sectionCounter+'">Sektions titel '+sectionCounter+'</label>')
-			.append('<input class="title" type="text" id="section_title_'+sectionCounter+'" name="section_title_'+sectionCounter+'" />')
+			.append('<input class="title" type="text" id="section_title_'+sectionCounter+'" name="eval_.section_ord'+sectionCounter+'_.title" />')
 			.append('<input type="button" name="delete_section_'+sectionCounter+'" value="Ta bort" />');
 		//Section row 2
 		var section_row_2 = $('#section_div_'+sectionCounter+' #section_'+sectionCounter+'_row_2');
 		section_row_2
 			.append('<label for="section_description_'+sectionCounter+'">Sektions beskrivning</label>')
-			.append('<textarea type="text" id="section_description_'+sectionCounter+'" name="section_description_'+sectionCounter+'"></textarea>');
+			.append('<textarea type="text" id="section_description_'+sectionCounter+'" name="eval_.section_ord'+sectionCounter+'_.description"></textarea>');
 		
 	});
-	$('input[name="create_question"]').click(function(idAttr) {
+	$('input[name="create_question"]').click(function() {
 		idAttr = $('div[id^="question_div_"]').last().attr('id');
 		if(idAttr == undefined){
 			questionCounter = 1;
@@ -56,7 +56,7 @@ $(document).ready(function(){
 		var question_row_1 = $('#question_div_'+questionCounter+' #question_'+questionCounter+'_row_1');
 		question_row_1	
 			.append('<h4><label for="question_'+questionCounter+'">Fråga '+questionCounter+':</label></h4>')
-			.append('<textarea type="text" id="question_'+questionCounter+'" name="question_'+questionCounter+'"></textarea>')
+			.append('<textarea type="text" id="question_'+questionCounter+'" name="eval_.question_ord'+questionCounter+'_.text"></textarea>')
 			.append('<input type="button" name="delete_question_'+questionCounter+'" value="Ta bort" />');
 		//Multiple choice alternatives
 		var question_row_2 = $('#question_div_'+questionCounter+' #question_'+questionCounter+'_row_2');

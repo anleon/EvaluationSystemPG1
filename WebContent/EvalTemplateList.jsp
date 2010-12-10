@@ -4,9 +4,9 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%	
-	List<EvalTemplate> evalList = (List<EvalTemplate>) request.getAttribute("EvalList");
-	// TODO Change this temporary code.
-	evalList = new ArrayList<EvalTemplate>();
+	List<Evaluation> evalList = (List<Evaluation>) request.getAttribute("EvalList");
+	// TODO Change this temporary code. 
+	evalList = new ArrayList<Evaluation>();
 %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +49,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<% for(EvalTemplate e:evalList) { %>
+		<% for(Evaluation e:evalList) { %>
 			<tr>
 				<td><%= e.getTitle() %></td>
 				<td><%= e.getGroup().getGroupName() %></td>

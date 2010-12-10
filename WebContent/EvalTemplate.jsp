@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <%@page language="java" contentType="text/html; charset=utf-8"%>
-<%@page import="evaluationSystemPG1.entities.EvalTemplate"%>
+<%@page import="evaluationSystemPG1.entities.Evaluation"%>
 <%@page import="evaluationSystemPG1.entities.Group"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.LinkedList"%>
-<% 	EvalTemplate et = (EvalTemplate) request.getAttribute("evalTemplate");
+<% 	Evaluation et = (Evaluation) request.getAttribute("evalTemplate");
 	 List<Group> gs = (List<Group>) request.getAttribute("groups");
-	// Temporary test code
+	// Temporary test code 
 		gs = new LinkedList<Group>();
 		Group gg = new Group();
 		gg.setGroupName("AD10");
@@ -39,12 +39,12 @@
 			
 			<div id="title_div">
 				<label for="title">Titel</label>
-				<input type="text" id="title" class="title" name="title" />
+				<input type="text" id="title" class="title" name="eval_.title" />
 			</div>
 			
 			<div id="group_div">
 				<label for="group">Grupp</label>
-				<select id="group" name="group">
+				<select id="group" name="eval_.group">
 					<% for(Group g : gs) { %> 
 					<option value="<%= g.getId() %>"><%= g.getGroupName() %></option>
 					<% } %>
