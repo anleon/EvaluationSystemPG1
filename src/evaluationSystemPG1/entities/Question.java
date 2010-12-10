@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -72,5 +73,11 @@ public class Question implements Serializable,IEntity{
 
 	public TextOption getTextOption() {
 		return textOption;
+	}
+
+	public static List<Question> make(String eval_tag,
+			Map<String, String[]> question_map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
