@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,13 +24,14 @@ public class Question implements Serializable,IEntity{
 	private static final long serialVersionUID = 544334524525425L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String text;
 	private Date date;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private TextOption textOption; 
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "text_option_id")
+	private List<TextOptionAnswer> textOption; 
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Option multiOption;
@@ -66,11 +68,18 @@ public class Question implements Serializable,IEntity{
 		return multiOption;
 	}
 
-	public void setTextOption(TextOption textOption) {
+	public void setTextOption(List<TextOptionAnswer> textOption) {
 		this.textOption = textOption;
 	}
 
-	public TextOption getTextOption() {
+	public List<TextOptionAnswer> getTextOption() {
 		return textOption;
 	}
+
+	public static List<Question> make(String eval_tag,
+			Map<String, String[]> question_map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

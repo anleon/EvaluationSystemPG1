@@ -5,7 +5,12 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,6 +25,7 @@ import org.hibernate.Session;
 import evaluationSystemPG1.db.HibernateUtil;
 import evaluationSystemPG1.entities.EvalTemplate;
 import evaluationSystemPG1.entities.EvalTemplateDAO;
+import evaluationSystemPG1.entities.Question;
 
 /**
  * Servlet implementation class Guestbook
@@ -101,7 +107,11 @@ public class AdminServlet extends HttpServlet {
 			request.getRequestDispatcher("EvalTemplates.jsp").forward(request, response);
 		} else {
 			EvalTemplate et = EvalTemplateDAO.getEvalTemplate(id);
-			request.setAttribute("EvalTemplate", et);
+			if (et != null) {
+				request.setAttribute("EvalTemplate", et);
+			} else {
+				et = new EvalTemplate();
+			}
 			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
 		}
 	}
@@ -110,11 +120,18 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		init(this.getServletContext());
+		// init(this.getServletContext());
 		
-		request.getRequestDispatcher("QuestionTest.jsp").include(request, response);
-		
-		// TODO Auto-generated method stub
+		// Save the EvalTemplate. 
+		//NOTE  It does check after a button named "save_eval".
+		boolean do_save_eval = request.getParameter("save_eval") != null ? true : false;
+		if (do_save_eval) {
+			Map<String,String[]> map = (Map<String, String[]>) request.getParameterMap();
+			List<EvalTemplate> et_list = EvalTemplate.make("",map);
+			EvalTemplate et =  et_list.get(0);
+			request.setAttribute("evalTemplate", et);
+			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
+		}
 	}
 
 }

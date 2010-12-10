@@ -1,9 +1,16 @@
 package evaluationSystemPG1.entities;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,6 +37,77 @@ public class EvalTemplate implements Serializable{
 	// TODO Change status from int to Enum.
 	private int status;
 
+	public static List<EvalTemplate> make(String tag,Map<String, String[]> map){
+		/* tag = eval_{id}. The {id} is optional.
+		 * If empty, create a new instance. else update the existing one.
+		 */
+		Pattern p = Pattern.compile("^eval_(\\d*)");
+		// matches, get id, ...
+		// Note that there is only one EvalTemplate to save at a time.
+		
+		//FIXME Temporary code
+		boolean has_id = false;
+		int id = 1;
+		String eval_tag = "eval_" + id + ".";
+		// End temporary code
+		
+		EvalTemplate et;
+		if (has_id) {
+			et = EvalTemplateDAO.getEvalTemplate(id);
+		} else {
+			et = new EvalTemplate();
+		}
+		
+		et.makeFields(tag,eval_tag,map);
+		
+		List<EvalTemplate> et_list = new LinkedList<EvalTemplate>();
+		et_list.add(et);
+		return et_list;
+	}
+	
+
+	private void makeFields(String tag,String eval_tag,Map<String, String[]> map) {
+		// date
+		Calendar c = Calendar.getInstance();
+		Date d = c.getTime();
+		setDate(d);
+		// title
+		String[] title_param = map.get(tag + "title");
+		if (title_param != null) {
+			setTitle(title_param[0]);
+		}
+		// status
+		String[] status_param = map.get(tag + "status");
+		if (status_param != null) {
+			setStatus(Integer.parseInt(status_param[0]));
+		}
+		// group
+		/*
+		String[] group_param;
+		group_param = map.get(tag + "group");
+		GroupDAO g_dao = GroupDAO.getInstance();
+		Group group = g_dao.get(Integer.parseInt(group_param[0]));
+		this.setGroup(group);
+		*/
+		// parts ...
+		Iterator<String> it = map.keySet().iterator();
+		//TODO We are currently skipping out sections. Change this if we introduce them.
+		// Map<String, String[]> section_map = new HashMap<String, String[]>();
+		Map<String, String[]> question_map  = new HashMap<String, String[]>();
+		while(it.hasNext()){
+			String param = it.next();
+			/*
+			if (param.startsWith(tag + "section_")) {
+				section_map.put(param,map.get(param));
+			}
+			*/
+			if (param.startsWith(tag + "question_")) {
+				question_map.put(param,map.get(param));
+			}
+		}
+		List<Question> parts = Question.make(eval_tag,question_map);
+		setParts(parts);
+	}
 
 
 	public int getId() {
