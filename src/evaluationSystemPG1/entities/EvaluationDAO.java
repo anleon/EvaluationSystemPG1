@@ -2,10 +2,10 @@ package evaluationSystemPG1.entities;
 
 import evaluationSystemPG1.abstracts.EntitiesDAO;
 
-public class EvaluationDAO extends EntitiesDAO<Group> {
+public class EvaluationDAO extends EntitiesDAO<Evaluation> {
 
 	private EvaluationDAO() {
-		super(Group.class);
+		super(Evaluation.class);
 	}
 
 	/**

@@ -18,8 +18,18 @@ public class RadiobuttonPanel extends Option implements Serializable,IEntity {
 	private static final long serialVersionUID = 4242256775914443344L;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "radio_option_id")
+	@JoinColumn()
 	private List<RadiobuttonPanelAnswer> answer = new ArrayList<RadiobuttonPanelAnswer>();
+
+	private List<Label> alternatives;
+	
+	public List<Label> getAlternatives() {
+		return alternatives;
+	}
+
+	public void setAlternatives(List<Label> alternatives) {
+		this.alternatives = alternatives;
+	}
 
 	public void setAnswer(List<RadiobuttonPanelAnswer> answer) {
 		this.answer = answer;

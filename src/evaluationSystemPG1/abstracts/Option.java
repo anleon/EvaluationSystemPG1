@@ -12,8 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
-
-import evaluationSystemPG1.entities.Alternative;
+import evaluationSystemPG1.entities.Label;
 
 @Entity(name = "options" )
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -24,7 +23,8 @@ public abstract class Option {
 	private int id;
 
 	@ManyToMany(cascade=CascadeType.ALL)
-	private List<Alternative> alternatives; 
+	
+	private List<Label> alternatives; 
 
 	public abstract String getAnswerString();
 
@@ -41,18 +41,18 @@ public abstract class Option {
 		int i = 1;
 		System.out.println(this.alternatives.size());
 		
-		for (Alternative alt : this.alternatives){
+		for (Label alt : this.alternatives){
 			s += "alt "+ i +" : "+ alt.getLabel() + ": \n";
 			i++;
 		}
 		return s;
 	}
 
-	public void setAlternatives(List<Alternative> alternatives ) {
+	public void setAlternatives(List<Label> alternatives ) {
 		this.alternatives = alternatives;
 	}
 
-	public List<Alternative> getAlternatives() {
+	public List<Label> getAlternatives() {
 		return alternatives;
 	}
 

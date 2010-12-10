@@ -73,7 +73,8 @@ public class Evaluation implements Serializable,IEntity{
 		// If empty, create a new instance. else update the existing one.
 		Evaluation et;
 		if (has_id) {
-			et = EvalTemplateDAO.getEvalTemplate(id);
+			EvaluationDAO etDAO = EvaluationDAO.getInstance();
+			et = etDAO.get(id);
 		} else {
 			et = new Evaluation();
 			id = et.getId();
