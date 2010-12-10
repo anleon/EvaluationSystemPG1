@@ -2,6 +2,7 @@ package evaluationSystemPG1.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -50,5 +51,10 @@ public class TextOption implements Serializable, IEntity {
 	}
 	public int getId() {
 		return id;
+	}
+	public static List<TextOption> make(String eval_tag,
+			Map<String, String[]> textOption_map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

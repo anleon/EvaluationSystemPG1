@@ -1,6 +1,7 @@
 package evaluationSystemPG1.abstracts;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
-import evaluationSystemPG1.entities.Label;
+import evaluationSystemPG1.entities.Alternative;
 
 @Entity(name = "options" )
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -23,7 +24,7 @@ public abstract class Option {
 	private int id;
 
 	@ManyToMany(cascade=CascadeType.ALL)
-	private List<Label> alternatives; 
+	private List<Alternative> alternatives; 
 
 	public abstract String getAnswerString();
 
@@ -40,19 +41,25 @@ public abstract class Option {
 		int i = 1;
 		System.out.println(this.alternatives.size());
 		
-		for (Label alt : this.alternatives){
+		for (Alternative alt : this.alternatives){
 			s += "alt "+ i +" : "+ alt.getLabel() + ": \n";
 			i++;
 		}
 		return s;
 	}
 
-	public void setAlternatives(List<Label> alternatives ) {
+	public void setAlternatives(List<Alternative> alternatives ) {
 		this.alternatives = alternatives;
 	}
 
-	public List<Label> getAlternatives() {
+	public List<Alternative> getAlternatives() {
 		return alternatives;
+	}
+
+	public static List<Option> make(String eval_tag,
+			Map<String, String[]> textOption_map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
