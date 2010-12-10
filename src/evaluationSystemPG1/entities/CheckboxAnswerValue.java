@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import evaluationSystemPG1.abstracts.IEntity;
 
 @Entity(name= "checkbox_answer_values")
-public class CheckBoxValue implements Serializable, IEntity {
+public class CheckboxAnswerValue implements Serializable, IEntity {
 
 	public int getId() {
 		return id;

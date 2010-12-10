@@ -2,8 +2,8 @@ package test;
 import java.io.File;
 
 import evaluationSystemPG1.db.HibernateUtil;
-import evaluationSystemPG1.entities.Alternative;
-import evaluationSystemPG1.entities.AlternativeDAO;
+import evaluationSystemPG1.entities.Label;
+import evaluationSystemPG1.entities.LabelDAO;
 
 public class PopulateDB {
 
@@ -15,9 +15,9 @@ public class PopulateDB {
 		File configFile = new File("/Users/ollesvensson/Programering/helios/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml");
 		HibernateUtil.initHibernate(configFile);
 
-		AlternativeDAO altDAO = AlternativeDAO.getInstance();
+		LabelDAO altDAO = LabelDAO.getInstance();
 		for (int i = 1; i < 7; i++) {
-			Alternative alt = new Alternative();
+			Label alt = new Label();
 			alt.setLabel(Integer.toString(i));
 			altDAO.save(alt);
 		}

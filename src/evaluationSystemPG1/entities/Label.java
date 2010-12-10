@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import evaluationSystemPG1.abstracts.IEntity;
 
 @Entity(name = "alternatives")
-public class Alternative implements IEntity,Serializable{
+public class Label implements IEntity,Serializable{
 	
 	/**
 	 * 

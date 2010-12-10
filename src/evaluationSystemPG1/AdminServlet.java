@@ -22,7 +22,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import evaluationSystemPG1.db.HibernateUtil;
-import evaluationSystemPG1.entities.EvalTemplate;
+import evaluationSystemPG1.entities.Evaluation;
 import evaluationSystemPG1.entities.EvalTemplateDAO;
 import evaluationSystemPG1.entities.Question;
 

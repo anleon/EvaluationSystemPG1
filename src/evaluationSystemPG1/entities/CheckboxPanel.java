@@ -5,20 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
-import evaluationSystemPG1.abstracts.Answer;
 import evaluationSystemPG1.abstracts.IEntity;
 import evaluationSystemPG1.abstracts.Option;
 
-@Entity(name = "checkbox_options")
+@Entity(name = "checkbox_panel")
 public class CheckboxPanel extends Option implements Serializable,IEntity {
 
 	private static final long serialVersionUID = 4256614776600856748L;
@@ -41,8 +36,7 @@ public class CheckboxPanel extends Option implements Serializable,IEntity {
 
 	@Override
 	public String getAnswerString() {
-		String s = null;
-		return s;
+		// TODO Auto-generated method stub
+		return null;
 	}
-
 }

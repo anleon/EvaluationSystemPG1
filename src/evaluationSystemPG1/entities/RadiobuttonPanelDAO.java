@@ -5,12 +5,12 @@ import java.util.List;
 
 import evaluationSystemPG1.abstracts.EntitiesDAO;
 import evaluationSystemPG1.abstracts.IEntity;
-import evaluationSystemPG1.entities.AlternativeDAO;
+import evaluationSystemPG1.entities.LabelDAO;
 
-public class RadiobuttonDAO extends EntitiesDAO<Radiobutton> implements IEntity {
+public class RadiobuttonPanelDAO extends EntitiesDAO<RadiobuttonPanel> implements IEntity {
 
-	private RadiobuttonDAO() {
-		super(Radiobutton.class);
+	private RadiobuttonPanelDAO() {
+		super(RadiobuttonPanel.class);
 	}
 
 	/**
@@ -19,19 +19,19 @@ public class RadiobuttonDAO extends EntitiesDAO<Radiobutton> implements IEntity 
 	 * not before.
 	 */
 	private static class RadiobuttonDAOHolder {
-		public static final RadiobuttonDAO INSTANCE = new RadiobuttonDAO();
+		public static final RadiobuttonPanelDAO INSTANCE = new RadiobuttonPanelDAO();
 	}
 
-	public static RadiobuttonDAO getInstance() {
+	public static RadiobuttonPanelDAO getInstance() {
 		return RadiobuttonDAOHolder.INSTANCE;
 	}
 
 	
 	
-	public static Radiobutton getRadiobutton1to6() {
-		Radiobutton radioOpt = new Radiobutton();
-		List<Alternative> alts = new ArrayList<Alternative>();
-		AlternativeDAO alternativeDAO = AlternativeDAO.getInstance();
+	public static RadiobuttonPanel getRadiobutton1to6() {
+		RadiobuttonPanel radioOpt = new RadiobuttonPanel();
+		List<Label> alts = new ArrayList<Label>();
+		LabelDAO alternativeDAO = LabelDAO.getInstance();
 		for (int i=1 ; i < 7 ;i ++){
 			alts.add(alternativeDAO.get(i));
 		}

@@ -3,15 +3,16 @@ package evaluationSystemPG1.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import evaluationSystemPG1.abstracts.IEntity;
+
 @Entity(name="eval_templates")
-public class EvalTemplate implements Serializable{
+public class Evaluation implements Serializable,IEntity{
 
 	private static final long serialVersionUID = -4796461068442539025L;
 
@@ -26,11 +27,7 @@ public class EvalTemplate implements Serializable{
 	// TODO Add hibernate join annotations here.
 	private List<Question> parts;
 	// TODO Add hibernate join annotations here.
-	private Set<Eval> evals;
-	// TODO Change status from int to Enum.
 	private int status;
-
-
 
 	public int getId() {
 		return id;
@@ -62,12 +59,7 @@ public class EvalTemplate implements Serializable{
 	public void setParts(List<Question> parts) {
 		this.parts = parts;
 	}
-	public Set<Eval> getEvals() {
-		return evals;
-	}
-	public void setEvals(Set<Eval> evals) {
-		this.evals = evals;
-	}
+
 	public int getStatus() {
 		return status;
 	}

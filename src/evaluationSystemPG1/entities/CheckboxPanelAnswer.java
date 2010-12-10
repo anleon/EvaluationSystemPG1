@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 
 import evaluationSystemPG1.abstracts.IEntity;
 
-@Entity(name = "checkbox_option_answer")
+@Entity(name = "checkbox_panel_answer")
 public class CheckboxPanelAnswer implements Serializable, IEntity {
 
 	/**
@@ -30,7 +30,7 @@ public class CheckboxPanelAnswer implements Serializable, IEntity {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "checkbox_answer")
-	private List<CheckBoxValue> values = new ArrayList<CheckBoxValue>();;
+	private List<CheckboxAnswerValue> values = new ArrayList<CheckboxAnswerValue>();;
 	
 	public int getId() {
 		return id;
@@ -38,10 +38,10 @@ public class CheckboxPanelAnswer implements Serializable, IEntity {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public void setValues(List<CheckBoxValue> values) {
+	public void setValues(List<CheckboxAnswerValue> values) {
 		this.values = values;
 	}
-	public List<CheckBoxValue> getValues() {
+	public List<CheckboxAnswerValue> getValues() {
 		return values;
 	}
 

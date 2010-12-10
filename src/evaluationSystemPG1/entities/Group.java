@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import evaluationSystemPG1.abstracts.IEntity;
+
 @Entity(name="groups")
-public class Group implements Serializable {
+public class Group implements Serializable,IEntity {
 
 	private static final long serialVersionUID = -6234881273701238057L;
 	

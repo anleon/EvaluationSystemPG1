@@ -27,16 +27,16 @@ public class TextOption implements Serializable, IEntity {
 	private int id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Alternative alternative; 
+	private Label alternative; 
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "text_option_id")
 	private List<TextOptionAnswer> textAnswers;
 	
-	public void setAlternative(Alternative alternative) {
+	public void setAlternative(Label alternative) {
 		this.alternative = alternative;
 	}
-	public Alternative getAlternative() {
+	public Label getAlternative() {
 		return alternative;
 	}
 	public void setTextAnswers(List<TextOptionAnswer> textAnswers) {

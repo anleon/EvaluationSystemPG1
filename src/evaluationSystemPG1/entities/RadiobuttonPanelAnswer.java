@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "radio_option_answer")
-public class RadiobuttonAnswer implements Serializable{
+import evaluationSystemPG1.abstracts.IEntity;
+
+@Entity(name = "radiobutton_answer")
+public class RadiobuttonPanelAnswer implements Serializable,IEntity{
 
 	/**
 	 * 

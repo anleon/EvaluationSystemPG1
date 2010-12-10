@@ -7,7 +7,7 @@ import evaluationSystemPG1.db.HibernateUtil;
 
 public class EvalTemplateDAO {
 
-	public static EvalTemplate getEvalTemplate(int id){
+	public static Evaluation getEvalTemplate(int id){
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
 
@@ -15,7 +15,7 @@ public class EvalTemplateDAO {
 		query.setString(id,"id");
 		
 		herbSession.getTransaction().commit();
-		EvalTemplate post = (EvalTemplate) query.uniqueResult();
+		Evaluation post = (Evaluation) query.uniqueResult();
 
 		return post;
 	}

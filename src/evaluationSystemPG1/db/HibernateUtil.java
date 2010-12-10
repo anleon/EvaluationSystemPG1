@@ -7,13 +7,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import evaluationSystemPG1.abstracts.Option;
-import evaluationSystemPG1.entities.Alternative;
-import evaluationSystemPG1.entities.CheckBoxValue;
+import evaluationSystemPG1.entities.Label;
+import evaluationSystemPG1.entities.CheckboxAnswerValue;
 import evaluationSystemPG1.entities.CheckboxPanel;
 import evaluationSystemPG1.entities.CheckboxPanelAnswer;
 import evaluationSystemPG1.entities.Question;
-import evaluationSystemPG1.entities.Radiobutton;
-import evaluationSystemPG1.entities.RadiobuttonAnswer;
+import evaluationSystemPG1.entities.RadiobuttonPanel;
+import evaluationSystemPG1.entities.RadiobuttonPanelAnswer;
 import evaluationSystemPG1.entities.TextOption;
 import evaluationSystemPG1.entities.TextOptionAnswer;
 
@@ -27,12 +27,12 @@ public class HibernateUtil {
 	    												.addAnnotatedClass(Question.class)
 	    												.addAnnotatedClass(Option.class)
 	    												.addAnnotatedClass(TextOptionAnswer.class)
-	    												.addAnnotatedClass(Radiobutton.class)
-	    												.addAnnotatedClass(RadiobuttonAnswer.class)
-	    												.addAnnotatedClass(Alternative.class)
+	    												.addAnnotatedClass(RadiobuttonPanel.class)
+	    												.addAnnotatedClass(RadiobuttonPanelAnswer.class)
+	    												.addAnnotatedClass(Label.class)
 	    												.addAnnotatedClass(CheckboxPanel.class)
 	    												.addAnnotatedClass(CheckboxPanelAnswer.class)
-	    												.addAnnotatedClass(CheckBoxValue.class)
+	    												.addAnnotatedClass(CheckboxAnswerValue.class)
 	    												.addAnnotatedClass(TextOption.class)	    												.addAnnotatedClass(CheckboxPanelAnswer.class)
 	    												
 	    												.configure(configFile);

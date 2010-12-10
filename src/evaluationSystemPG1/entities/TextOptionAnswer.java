@@ -3,22 +3,14 @@
  */
 package evaluationSystemPG1.entities;
 
-import java.awt.List;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
-import evaluationSystemPG1.abstracts.Answer;
 import evaluationSystemPG1.abstracts.IEntity;
-import evaluationSystemPG1.abstracts.Option;
 
 /**
  * @author ollesvensson
