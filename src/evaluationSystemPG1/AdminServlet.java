@@ -105,11 +105,11 @@ public class AdminServlet extends HttpServlet {
 		if (id == 0) {
 			request.getRequestDispatcher("EvalTemplates.jsp").forward(request, response);
 		} else {
-			EvalTemplate et = EvalTemplateDAO.getEvalTemplate(id);
+			Evaluation et = EvalTemplateDAO.getEvalTemplate(id);
 			if (et != null) {
 				request.setAttribute("EvalTemplate", et);
 			} else {
-				et = new EvalTemplate();
+				et = new Evaluation();
 			}
 			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
 		}
@@ -145,7 +145,7 @@ public class AdminServlet extends HttpServlet {
 		}
 		
 		wr.write("<p>Dessa har vi tagit hand om.</p>");
-		EvalTemplate et = new EvalTemplate();
+		Evaluation et = new Evaluation();
 		
 		String title = request.getParameter("title");
 		et.setTitle(title);
