@@ -115,35 +115,46 @@ public class Question implements Serializable,IEntity{
 		/* Now that they are grouped by order, we can look at the id. 
 		 * Then we can create it or update it as needed.
 		 * Note that it is enough to look at the first in each group to get the id. */
-		Iterator it_grouped = question_in_order.keySet().iterator();
+		Iterator<Integer> it_grouped = question_in_order.keySet().iterator();
 		// return value
 		List<Question> q_list = new LinkedList<Question>();
 		
 		while (it_grouped.hasNext()) {
-			/*
-			// Get the id.
+			Integer order_key = it_grouped.next();
+			int order = order_key.intValue();
+			List<String> param_strings = question_in_order.get(order_key);
+
+			// Get the id. The first is enough.
+			Matcher m = p_question.matcher("question_ord" + order + "_(\\d*)");
+			m.lookingAt();
+			
 			boolean has_id = false;
 			int id = 0;
-			
-			// If empty, create a new instance. else update the existing one.
-			
-			
-			Evaluation et;
-			if (has_id) {
-				et = EvalTemplateDAO.getEvalTemplate(id);
-			} else {
-				et = new Evaluation();
-				id = et.getId();
+			try {
+				id = Integer.parseInt(m.group(1));
+				has_id = true;
+			} catch (Exception e) {
+				id = 0;
 			}
+
+			// If empty, create a new instance. else update the existing one.
 			Question q;
-			// We will build up this in a cascading way, so that every class just handle itself.
-			String eval_tag = "eval_" + id + ".";
-			// make all the fields. Note that it will in turn call the dependant classes make function.
-			q.makeFields(tag,eval_tag,map);
+			if (has_id) {
+				QuestionDAO qDAO = QuestionDAO.getInstance();
+				q = qDAO.get(id);
+			} else {
+				q = new Question();
+			}
 			
-			q_list.add(q);
-			*/ 
+			// We will build up this in a cascading way, so that every class just handle itself.
+			String id_string = has_id ? id + "" : "";
+			String question_tag = "question_ord" + order + "_" + id_string + ".";
+			// make all the fields. Note that it will in turn call the dependant classes make function.
+			q.makeFields(tag,question_tag,map);
+			
+			q_list.add(q);	
 		}
+		
 		return q_list;
 	}
 	
