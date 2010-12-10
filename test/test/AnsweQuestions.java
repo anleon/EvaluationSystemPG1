@@ -9,13 +9,13 @@ import java.util.List;
 
 import evaluationSystemPG1.abstracts.Option;
 import evaluationSystemPG1.db.HibernateUtil;
-import evaluationSystemPG1.entities.CheckBoxValue;
+import evaluationSystemPG1.entities.CheckboxAnswerValue;
 import evaluationSystemPG1.entities.CheckboxPanel;
 import evaluationSystemPG1.entities.CheckboxPanelAnswer;
 import evaluationSystemPG1.entities.Question;
 import evaluationSystemPG1.entities.QuestionDAO;
-import evaluationSystemPG1.entities.Radiobutton;
-import evaluationSystemPG1.entities.RadiobuttonAnswer;
+import evaluationSystemPG1.entities.RadiobuttonPanel;
+import evaluationSystemPG1.entities.RadiobuttonPanelAnswer;
 import evaluationSystemPG1.entities.TextOptionAnswer;
 
 public class AnsweQuestions {
@@ -55,8 +55,8 @@ public class AnsweQuestions {
 			if (question.getMultiOption() != null) {
 				Option option = question.getMultiOption();
 				// if multioption is Radiobutton collect answer
-				if (option instanceof Radiobutton) {
-					Radiobutton radio = (Radiobutton) option;
+				if (option instanceof RadiobuttonPanel) {
+					RadiobuttonPanel radio = (RadiobuttonPanel) option;
 					System.out.println("Radiobutton svar: ");
 					String radiobuttonAnswer = "";
 					BufferedReader br = new BufferedReader(
@@ -65,7 +65,7 @@ public class AnsweQuestions {
 						try {
 							radiobuttonAnswer = br.readLine();
 							int radioAnsInt = Integer.parseInt(radiobuttonAnswer);
-							RadiobuttonAnswer rAnswer = new RadiobuttonAnswer();
+							RadiobuttonPanelAnswer rAnswer = new RadiobuttonPanelAnswer();
 							rAnswer.setAnswer(radioAnsInt);
 							radio.getAnswer().add(rAnswer);
 							break;
@@ -88,7 +88,7 @@ public class AnsweQuestions {
 							List<CheckboxPanelAnswer> checkAnsInt = new ArrayList<CheckboxPanelAnswer>();
 							for (String answer : answerArray){
 								CheckboxPanelAnswer checkboxAnswer = new CheckboxPanelAnswer();
-								CheckBoxValue cBV = new CheckBoxValue();
+								CheckboxAnswerValue cBV = new CheckboxAnswerValue();
 								cBV.setValue(Integer.parseInt(answer));
 								System.out.println("före " + cBV);
 								checkboxAnswer.getValues().add(cBV); 	

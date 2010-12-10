@@ -10,15 +10,15 @@ import java.util.List;
 
 import evaluationSystemPG1.abstracts.Option;
 import evaluationSystemPG1.db.HibernateUtil;
-import evaluationSystemPG1.entities.Alternative;
-import evaluationSystemPG1.entities.AlternativeDAO;
+import evaluationSystemPG1.entities.Label;
+import evaluationSystemPG1.entities.LabelDAO;
 import evaluationSystemPG1.entities.CheckboxPanel;
 import evaluationSystemPG1.entities.CheckboxPanelAnswer;
 import evaluationSystemPG1.entities.Question;
 import evaluationSystemPG1.entities.QuestionDAO;
-import evaluationSystemPG1.entities.Radiobutton;
-import evaluationSystemPG1.entities.RadiobuttonAnswer;
-import evaluationSystemPG1.entities.RadiobuttonDAO;
+import evaluationSystemPG1.entities.RadiobuttonPanel;
+import evaluationSystemPG1.entities.RadiobuttonPanelAnswer;
+import evaluationSystemPG1.entities.RadiobuttonPanelDAO;
 import evaluationSystemPG1.entities.TextOption;
 import evaluationSystemPG1.entities.TextOptionAnswer;
 
@@ -27,9 +27,9 @@ public class HibernateTest {
 	public static void main(String[] arg) {
 		init();
 		
-		AlternativeDAO altDAO = AlternativeDAO.getInstance();
+		LabelDAO altDAO = LabelDAO.getInstance();
 		for (int i = 1; i < 7; i++) {
-			Alternative alt = new Alternative();
+			Label alt = new Label();
 			alt.setLabel(Integer.toString(i));
 			altDAO.save(alt);
 		}
@@ -42,7 +42,7 @@ public class HibernateTest {
 		q.setText("AA textOption och radiobutton1to6");
 		q.setDate(new Date());
 		q.setTextOption(getTextOption("Freetext till q1: "));
-		Radiobutton radioOpt1 = RadiobuttonDAO.getRadiobutton1to6();
+		RadiobuttonPanel radioOpt1 = RadiobuttonPanelDAO.getRadiobutton1to6();
 		q.setMultiOption(radioOpt1);
 
 		qDAO.save(q);
@@ -79,9 +79,9 @@ public class HibernateTest {
 	
 	private static CheckboxPanel getCheckboxPanel(String[] alternatives){ 
 		CheckboxPanel radioOpt = new CheckboxPanel();
-		List<Alternative> alts = new ArrayList<Alternative>();
+		List<Label> alts = new ArrayList<Label>();
 		for (String alt : alternatives){
-			Alternative alter = new Alternative();
+			Label alter = new Label();
 			alter.setLabel(alt);
 			alts.add(alter);
 		}
@@ -89,11 +89,11 @@ public class HibernateTest {
 		return radioOpt;
 	}
 	
-	private static Radiobutton getRadiobutton(String[] alternatives){ 
-		Radiobutton radioOpt = new Radiobutton();
-		List<Alternative> alts = new ArrayList<Alternative>();
+	private static RadiobuttonPanel getRadiobutton(String[] alternatives){ 
+		RadiobuttonPanel radioOpt = new RadiobuttonPanel();
+		List<Label> alts = new ArrayList<Label>();
 		for (String alt : alternatives){
-			Alternative alter = new Alternative();
+			Label alter = new Label();
 			alter.setLabel(alt);
 			alts.add(alter);
 		}
@@ -104,7 +104,7 @@ public class HibernateTest {
 
 private static TextOption getTextOption(String bla) {
 	TextOption tO = new TextOption();
-	Alternative alt = new Alternative();
+	Label alt = new Label();
 	alt.setLabel(bla);
 	tO.setAlternative(alt);
 	

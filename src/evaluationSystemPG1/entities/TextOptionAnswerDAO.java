@@ -1,34 +1,29 @@
 package evaluationSystemPG1.entities;
 
-import java.util.List;
+import java.io.Serializable;
+import evaluationSystemPG1.abstracts.EntitiesDAO;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
+public class TextOptionAnswerDAO extends EntitiesDAO<TextOptionAnswer> implements Serializable {
 
-import evaluationSystemPG1.db.HibernateUtil;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8154042991863989266L;
 
-public class TextOptionAnswerDAO {
-
-	public static List<TextOptionAnswer> getAllTextOptions(){
-		Session herbSession = HibernateUtil.getSession();
-		herbSession.beginTransaction();
-
-		Query query = herbSession.createQuery("from evaluationSystemPG1.entitys.TextOption");
-//		Query query = herbSession.createCriteria("from se.kyh.guestbook.entities.Post");
-		
-		herbSession.getTransaction().commit();
-		List<TextOptionAnswer> textOptions = query.list();
-
-		return textOptions;
+	TextOptionAnswerDAO() {
+		super(TextOptionAnswer.class);
 	}
 
-	public static void saveOption(TextOptionAnswer textOption){
-		Session herbSession = HibernateUtil.getSession();
-		herbSession.beginTransaction();
-
-		herbSession.save(textOption);
-		
-		herbSession.getTransaction().commit();
+	/**
+	 * RadiobuttonDAOHolder is loaded on the first execution of
+	 * RadiobuttonDAO.getInstance() or the first access to RadiobuttonDAOHolder.INSTANCE,
+	 * not before.
+	 */
+	private static class TextOptionAnswerDAOHolder {
+		public static final TextOptionAnswerDAO INSTANCE = new TextOptionAnswerDAO();
 	}
 
+	public static TextOptionAnswerDAO getInstance() {
+		return TextOptionAnswerDAOHolder.INSTANCE;
+	}
 }

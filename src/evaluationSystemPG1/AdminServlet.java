@@ -18,7 +18,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import evaluationSystemPG1.db.HibernateUtil;
-import evaluationSystemPG1.entities.EvalTemplate;
+import evaluationSystemPG1.entities.Evaluation;
 import evaluationSystemPG1.entities.EvalTemplateDAO;
 
 /**
@@ -100,7 +100,7 @@ public class AdminServlet extends HttpServlet {
 		if (id == 0) {
 			request.getRequestDispatcher("EvalTemplates.jsp").forward(request, response);
 		} else {
-			EvalTemplate et = EvalTemplateDAO.getEvalTemplate(id);
+			Evaluation et = EvalTemplateDAO.getEvalTemplate(id);
 			request.setAttribute("EvalTemplate", et);
 			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
 		}
