@@ -86,6 +86,11 @@ div.section div[class^="section_row_"] textarea{
 
 input[type="image"] {
 	vertical-align : text-bottom;
+	margin: 2px 0 0;
+}
+
+input[name^="add_alt_"]{
+	margin: 10px 0 0 172px;
 }
 
 .question_row_4 {

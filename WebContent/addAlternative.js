@@ -57,7 +57,7 @@ $(document).ready(function(){
 		question_row_1	
 			.append('<h4><label for="question_'+questionCounter+'">Fråga '+questionCounter+':</label></h4>')
 			.append('<textarea type="text" id="question_'+questionCounter+'" name="question_'+questionCounter+'"></textarea>')
-			.append('<input type="button" name="delete_question_'+questionCounter+'" value="Ta bort" />')
+			.append('<input type="button" name="delete_question_'+questionCounter+'" value="Ta bort" />');
 		//Multiple choice alternatives
 		var question_row_2 = $('#question_div_'+questionCounter+' #question_'+questionCounter+'_row_2');
 		question_row_2	
@@ -141,22 +141,26 @@ $(document).ready(function(){
 		var first_alt_description = $('#question_div_'+questionCounter+' #question_'+questionCounter+'_row_4 fieldset:last li:first');
 		first_alt_description
 			.append('<input type="text" id="alt_description_'+questionCounter+'_1" name="alt_description_'+questionCounter+'_1" />')
-			.append('<input type="image" id="delete_alt_'+questionCounter+'_1" name="delete_alt_'+questionCounter+'_1" src="delete.jpg" alt="Ta bort" />');
+			.append('<input type="image" id="delete_alt_'+questionCounter+'_1" name="delete_alt_'+questionCounter+'_1" src="delete.png" alt="Ta bort" />');
 		var last_alt_description = $('#question_div_'+questionCounter+' #question_'+questionCounter+'_row_4 fieldset:last li:last');
 		last_alt_description
 			.append('<input type="text" id="alt_description_'+questionCounter+'_2" name="alt_description_'+questionCounter+'_2" />')
-			.append('<input type="image" id="delete_alt_'+questionCounter+'_2" name="delete_alt_'+questionCounter+'_2" src="delete.jpg" alt="Ta bort" />');
+			.append('<input type="image" id="delete_alt_'+questionCounter+'_2" name="delete_alt_'+questionCounter+'_2" src="delete.png" alt="Ta bort" />');
 		
 		$('#question_div_'+questionCounter+' #question_'+questionCounter+'_row_4 fieldset:last')
-			.append('<input type="image" id="add_alt_'+questionCounter+'" name="add_alt_'+questionCounter+'" src="add.jpg" alt="Lägg till" />');
+			.append('<input type="image" id="add_alt_'+questionCounter+'" name="add_alt_'+questionCounter+'" src="add.png" alt="Lägg till" />');
 	
 	});
 	
 	// Delete Alternative Description
 	$('input[name^="delete_"]').live('click',function() {
 		//FIXME
-		$(this).parent().parent().remove();
-		//console.log($(this));
+		if($(this).is('input[name^="delete_alt_"]')){
+			$(this).parent().remove();
+		}else{
+			$(this).parent().parent().remove();
+			//console.log($(this));
+		}
 	});
 	
 	// Add Alternative Description
@@ -165,7 +169,7 @@ $(document).ready(function(){
 		var last_alt = $(this).prev().append('<li></li>').children().last();
 		last_alt
 			.append('<input type="text" id="alt_description_'+questionCounter+'_2" name="alt_description_'+questionCounter+'_2" />')
-			.append('<input type="image" id="delete_alt_'+questionCounter+'_2" name="delete_alt_'+questionCounter+'_2" src="delete.jpg" alt="Ta bort" />');
+			.append('<input type="image" id="delete_alt_'+questionCounter+'_2" name="delete_alt_'+questionCounter+'_2" src="delete.png" alt="Ta bort" />');
 		return false;
 	});
 	
