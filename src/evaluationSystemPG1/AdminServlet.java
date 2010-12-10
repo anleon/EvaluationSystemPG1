@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,9 +22,11 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import evaluationSystemPG1.abstracts.EntitiesDAO;
 import evaluationSystemPG1.db.HibernateUtil;
 import evaluationSystemPG1.entities.Evaluation;
 import evaluationSystemPG1.entities.EvalTemplateDAO;
+import evaluationSystemPG1.entities.EvaluationDAO;
 import evaluationSystemPG1.entities.Question;
 
 /**
@@ -121,61 +124,18 @@ public class AdminServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// init(this.getServletContext());
 		
-		// Save() Evaluations/1
-		int id = 1; //FIXME Make the POST handling more generic, not ONLY one page.
-		HashMap<String,String[]> hashmap = (HashMap<String, String[]>) request.getParameterMap();
-		saveEval(request,response,id);
-	}
-	
-	private void saveEval(HttpServletRequest request, HttpServletResponse response, int id) throws IOException{
-		Writer wr = response.getWriter();
-		wr.write("<p>Dessa element har vi postat.</p><br />");
-		
-		
-		int nr_of_questions = 0;
-		Enumeration<String> en = (Enumeration<String>) request.getParameterNames();
-		while(en.hasMoreElements()){
-			String param = en.nextElement();
-			wr.write(param + "<br />");
-			// count matches of /question_\d+/
-			if (param.startsWith("question_")) {
-				nr_of_questions++;
-			}
-			
+		// Save the Evaluation. 
+		//NOTE  It does check after a button named "save_eval".
+		boolean do_save_eval = request.getParameter("save_eval") != null ? true : false;
+		if (do_save_eval) {
+			Map<String,String[]> map = (Map<String, String[]>) request.getParameterMap();
+			List<Evaluation> et_list = Evaluation.make("",map);
+			EvaluationDAO etDAO = EvaluationDAO.getInstance();
+			etDAO.saveAll(et_list);
+			Evaluation et = et_list.get(0);
+			request.setAttribute("evalTemplate", et);
+			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
 		}
-		
-		wr.write("<p>Dessa har vi tagit hand om.</p>");
-		Evaluation et = new Evaluation();
-		
-		String title = request.getParameter("title");
-		et.setTitle(title);
-		
-		//int groupId = Integer.parseInt(request.getParameter("group"));	
-		//Group g = GroupDAO.get(groupId);
-		// et.setGroup(group);
-		
-		List<Question> parts = new LinkedList<Question>();
-		// 1-baserad!!
-		for (int i = 1; i <= nr_of_questions; i++) {
-			String questionText = request.getParameter("question_" + i);
-			Question q = new Question();
-			q.setText(questionText);
-			parts.add(q);
-		}
-		et.setParts(parts);
-		
-		
-		
-		
-		// Visa temporärt vad vi har gjort
-		wr.write(title + "<br/>");
-		ListIterator li = parts.listIterator();
-		while(li.hasNext()) {
-			Question q = (Question) li.next();
-			wr.write(q.getText()  + "<br/>");
-		}
-		
-		
 	}
 
 }
