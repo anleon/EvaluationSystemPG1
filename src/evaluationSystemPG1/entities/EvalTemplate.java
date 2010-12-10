@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.persistence.Entity;
@@ -41,22 +42,31 @@ public class EvalTemplate implements Serializable{
 		/* tag = eval_{id}. The {id} is optional.
 		 * If empty, create a new instance. else update the existing one.
 		 */
-		Pattern p = Pattern.compile("^eval_(\\d*)");
-		// matches, get id, ...
-		// Note that there is only one EvalTemplate to save at a time.
-		
-		//FIXME Temporary code
+		Pattern p_eval = Pattern.compile("^eval_(\\d*)");
+		Matcher m = p_eval.matcher("");
+		int id = 0;
 		boolean has_id = false;
-		int id = 1;
-		String eval_tag = "eval_" + id + ".";
-		// End temporary code
+		if (m.lookingAt()) {
+			try {
+				id = Integer.parseInt(m.group(1));
+				has_id = true;
+			} catch (Exception e) {
+				id = 0;
+			}
+		} else {
+			// Returnerar en tom lista om det inte finns något att spara...
+			return new LinkedList<EvalTemplate>();
+		}
 		
+		// Note that there is only one EvalTemplate to save at a time.
 		EvalTemplate et;
 		if (has_id) {
 			et = EvalTemplateDAO.getEvalTemplate(id);
 		} else {
 			et = new EvalTemplate();
+			id = et.getId();
 		}
+		String eval_tag = "eval_" + id + ".";
 		
 		et.makeFields(tag,eval_tag,map);
 		
