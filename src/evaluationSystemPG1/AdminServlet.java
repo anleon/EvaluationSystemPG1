@@ -106,9 +106,10 @@ public class AdminServlet extends HttpServlet {
 			id = 0;
 		}
 		if (id == 0) {
-			request.getRequestDispatcher("EvalTemplates.jsp").forward(request, response);
+			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
 		} else {
-			Evaluation et = EvalTemplateDAO.getEvalTemplate(id);
+			EvaluationDAO evalDAO = EvaluationDAO.getInstance();
+			Evaluation et = evalDAO.get(id);
 			if (et != null) {
 				request.setAttribute("EvalTemplate", et);
 			} else {
