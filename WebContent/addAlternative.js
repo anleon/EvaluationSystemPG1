@@ -171,5 +171,12 @@ $(document).ready(function(){
 			return false;
 		});
 	});
+	
+	function inc(filename){
+		var script = $("<script type='text/javascript'></script>").attr("src",filename); 
+		$("body").append(script);
+	}
+
+	inc("jstest.js");
 		
 });
