@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import evaluationSystemPG1.db.HibernateUtil;
+import evaluationSystemPG1.entities.Evaluation;
 import evaluationSystemPG1.entities.Question;
 
 public abstract class EntitiesDAO<T extends IEntity > {

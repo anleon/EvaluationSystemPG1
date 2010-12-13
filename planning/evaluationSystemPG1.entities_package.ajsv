@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--AgileJ Ltd. (http://www.agilej.com)-->
+<ajsv>
+    <diagram style="hideGetSetDiagramStyle" version="1.7.1.v20100724-0834">
+        <switch switchID="howToShowDependenciesOptions" switchValue="hidden"/>
+        <switch switchID="howToShowFieldLinesOptions" switchValue="manhattan"/>
+        <switch switchID="howToShowInheritanceOptions" switchValue="manhattan"/>
+        <class className="evaluationSystemPG1.entities.TextOptionAnswerDAO" project="EvaluationSystemPG1" xLocation="1403" yLocation="617"/>
+        <class className="evaluationSystemPG1.entities.TextOption" project="EvaluationSystemPG1" xLocation="609" yLocation="335"/>
+        <class className="evaluationSystemPG1.entities.CheckboxPanel" project="EvaluationSystemPG1" xLocation="181" yLocation="1251"/>
+        <class className="evaluationSystemPG1.entities.CheckboxPanelDAO" project="EvaluationSystemPG1" xLocation="1381" yLocation="1376"/>
+        <class className="evaluationSystemPG1.entities.RadiobuttonPanel" project="EvaluationSystemPG1" xLocation="-79" yLocation="896"/>
+        <class className="evaluationSystemPG1.entities.RadiobuttonPanelAnswerDAO" project="EvaluationSystemPG1" xLocation="1382" yLocation="1604"/>
+        <class className="evaluationSystemPG1.entities.QuestionDAO" project="EvaluationSystemPG1" xLocation="1657" yLocation="301"/>
+        <class className="evaluationSystemPG1.entities.CheckboxPanelAnswer" project="EvaluationSystemPG1" xLocation="588" yLocation="1231"/>
+        <class className="evaluationSystemPG1.entities.CheckboxAnswerValueDAO" project="EvaluationSystemPG1" xLocation="1842" yLocation="1720"/>
+        <class className="evaluationSystemPG1.entities.Evaluation" project="EvaluationSystemPG1" xLocation="-91" yLocation="-78"/>
+        <class className="evaluationSystemPG1.entities.TextOptionAnswer" project="EvaluationSystemPG1" xLocation="994" yLocation="678"/>
+        <class className="evaluationSystemPG1.entities.RadiobuttonPanelDAO" project="EvaluationSystemPG1" xLocation="1369" yLocation="1144"/>
+        <class className="evaluationSystemPG1.entities.CheckboxPanelAnswerDAO" project="EvaluationSystemPG1" xLocation="1833" yLocation="1616"/>
+        <class className="evaluationSystemPG1.entities.RadiobuttonPanelAnswer" project="EvaluationSystemPG1" xLocation="625" yLocation="967"/>
+        <class className="evaluationSystemPG1.entities.Question" project="EvaluationSystemPG1" xLocation="-91" yLocation="336"/>
+        <class className="evaluationSystemPG1.entities.CheckboxAnswerValue" project="EvaluationSystemPG1" xLocation="641" yLocation="1462"/>
+        <class className="evaluationSystemPG1.entities.TextOptionDAO" project="EvaluationSystemPG1" xLocation="1382" yLocation="389"/>
+        <class className="evaluationSystemPG1.entities.LabelDAO" project="EvaluationSystemPG1" xLocation="1424" yLocation="897"/>
+        <class className="evaluationSystemPG1.entities.GroupDAO" project="EvaluationSystemPG1" xLocation="1398" yLocation="109"/>
+        <class className="evaluationSystemPG1.entities.Group" project="EvaluationSystemPG1" xLocation="661" yLocation="114"/>
+        <class className="evaluationSystemPG1.entities.Label" project="EvaluationSystemPG1" xLocation="647" yLocation="686"/>
+        <class className="evaluationSystemPG1.entities.EvaluationDAO" project="EvaluationSystemPG1" xLocation="1829" yLocation="-61"/>
+        <class className="evaluationSystemPG1.db.HibernateUtil" project="EvaluationSystemPG1" xLocation="920" yLocation="109"/>
+        <class className="evaluationSystemPG1.abstracts.EntitiesDAO" project="EvaluationSystemPG1" xLocation="1803" yLocation="676"/>
+        <class className="evaluationSystemPG1.abstracts.IEvaluationComponent" project="EvaluationSystemPG1" xLocation="203" yLocation="232"/>
+        <class className="evaluationSystemPG1.abstracts.IHtml" project="EvaluationSystemPG1" xLocation="787" yLocation="-68"/>
+        <class className="evaluationSystemPG1.abstracts.Option" project="EvaluationSystemPG1" xLocation="-78" yLocation="607"/>
+        <class className="evaluationSystemPG1.AdminServlet" project="EvaluationSystemPG1" xLocation="-246" yLocation="1585"/>
+        <class className="evaluationSystemPG1.exceptions.EvaluationParamsException" project="EvaluationSystemPG1" xLocation="27" yLocation="1445"/>
+    </diagram>
+</ajsv>
