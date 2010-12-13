@@ -18,8 +18,8 @@ public class Group implements Serializable,IEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;	
 	private String groupName;
-	private List<String> members;
-	
+	private String members;
+	//TODO change to member List<String> 
 	
 	public String getGroupName() {
 		return groupName;
@@ -27,17 +27,18 @@ public class Group implements Serializable,IEntity {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
-	public List<String> getMembers() {
-		return members;
-	}
-	public void setMembers(List<String> members) {
-		this.members = members;
-	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 	public int getId() {
 		return id;
+	}
+	public void setMembers(String members) {
+		this.members = members;
+	}
+	public String getMembers() {
+		return members;
 	}
 	
 }

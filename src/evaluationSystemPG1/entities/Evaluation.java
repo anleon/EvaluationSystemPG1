@@ -1,6 +1,7 @@
 package evaluationSystemPG1.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
@@ -13,14 +14,18 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import evaluationSystemPG1.abstracts.IEntity;
 
-@Entity(name="eval_templates")
+@Entity(name="evaluations")
 public class Evaluation implements Serializable,IEntity{
 
 	private static final long serialVersionUID = -4796461068442539025L;
@@ -29,12 +34,15 @@ public class Evaluation implements Serializable,IEntity{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
+	@Column(name = "group_id" )
 	private Group group;
 	// TODO Rename date to what it actually means.
 	private Date date;
 	// TODO Change parts from List<Question> to List<IEvalComponent>.
 	// TODO Add hibernate join annotations here.
-	private List<Question> parts;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "evaluation_id")
+	private List<Question> parts = new ArrayList<Question>();
 	// TODO Add hibernate join annotations here.
 	private int status;
 

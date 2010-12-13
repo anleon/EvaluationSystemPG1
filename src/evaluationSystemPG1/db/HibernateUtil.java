@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import evaluationSystemPG1.abstracts.Option;
+import evaluationSystemPG1.entities.Evaluation;
+import evaluationSystemPG1.entities.Group;
 import evaluationSystemPG1.entities.Label;
 import evaluationSystemPG1.entities.CheckboxAnswerValue;
 import evaluationSystemPG1.entities.CheckboxPanel;
@@ -24,6 +26,8 @@ public class HibernateUtil {
 	public static void initHibernate(File configFile){
 	    	if( null == sessionFactory){
 	    		AnnotationConfiguration annotationConfiguration = new AnnotationConfiguration()
+	    												.addAnnotatedClass(Evaluation.class)
+	    												.addAnnotatedClass(Group.class)
 	    												.addAnnotatedClass(Question.class)
 	    												.addAnnotatedClass(Option.class)
 	    												.addAnnotatedClass(TextOptionAnswer.class)

@@ -51,4 +51,5 @@ public class TextOption implements Serializable, IEntity {
 	public int getId() {
 		return id;
 	}
+
 }
