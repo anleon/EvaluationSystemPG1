@@ -10,6 +10,8 @@ import java.util.List;
 
 import evaluationSystemPG1.abstracts.Option;
 import evaluationSystemPG1.db.HibernateUtil;
+import evaluationSystemPG1.entities.Evaluation;
+import evaluationSystemPG1.entities.EvaluationDAO;
 import evaluationSystemPG1.entities.Label;
 import evaluationSystemPG1.entities.LabelDAO;
 import evaluationSystemPG1.entities.CheckboxPanel;
@@ -33,7 +35,9 @@ public class HibernateTest {
 			alt.setLabel(Integer.toString(i));
 			altDAO.save(alt);
 		}
-
+		
+		Evaluation eval = new Evaluation();
+	
 		
 		QuestionDAO qDAO = QuestionDAO.getInstance();
 	// FRÅGA 1 
@@ -45,18 +49,18 @@ public class HibernateTest {
 		RadiobuttonPanel radioOpt1 = RadiobuttonPanelDAO.getRadiobutton1to6();
 		q.setMultiOption(radioOpt1);
 
-		qDAO.save(q);
-/*
+		eval.getParts().add(q);
+
 		// Fråga 2 utan textOption 
 		Question q2 = new Question();
 		q2.setText("BBBBBBBBBBBBBBBBB ");
 		q2.setDate(new Date());
 		String[] alts = {"dåligt","ok","bra","utmärkt"};
-		Radiobutton radioOpt2 = getRadiobutton(alts);		
+		RadiobuttonPanel radioOpt2 = getRadiobutton(alts);		
 		q2.setMultiOption(radioOpt2);
 
-		qDAO.save(q2);
-*/		
+		eval.getParts().add(q2);
+		
 		//Fråga 3 text opt checkbox
 		Question question3 = new Question();
 		question3.setText("CCCCCCCCCCCCCCCCCCCC");
@@ -66,15 +70,18 @@ public class HibernateTest {
 		question3.setTextOption(getTextOption("Freetext till q3: "));
 		question3.setMultiOption(checkbox);
 		
-		qDAO.save(question3);
+		eval.getParts().add(question3);
 
 		//Fråga 4 textopt ingen multioption
-/*		Question question4 = new Question();
+		Question question4 = new Question();
 		question4.setText("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
 		question4.setDate(new Date());
 		
 		question4.setTextOption(getTextOption("Freetext till q4: "));
-		qDAO.save(question4);*/
+		eval.getParts().add(question4);
+		
+		EvaluationDAO eDao = EvaluationDAO.getInstance();
+		eDao.save(eval);
 	}
 	
 	private static CheckboxPanel getCheckboxPanel(String[] alternatives){ 

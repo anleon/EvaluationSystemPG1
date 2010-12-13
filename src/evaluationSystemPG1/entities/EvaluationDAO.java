@@ -13,11 +13,11 @@ public class EvaluationDAO extends EntitiesDAO<Evaluation> {
 	 * SurveyDAO.getInstance() or the first access to SurveyDAOHolder.INSTANCE,
 	 * not before.
 	 */
-	private static class SurveyDAOHolder {
+	private static class EvaluationDAOHolder {
 		public static final EvaluationDAO INSTANCE = new EvaluationDAO();
 	}
 
 	public static EvaluationDAO getInstance() {
-		return SurveyDAOHolder.INSTANCE;
+		return EvaluationDAOHolder.INSTANCE;
 	}
 }
