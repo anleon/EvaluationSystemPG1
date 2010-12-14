@@ -10,6 +10,8 @@ import java.util.List;
 
 import evaluationSystemPG1.abstracts.Option;
 import evaluationSystemPG1.db.HibernateUtil;
+import evaluationSystemPG1.entities.Admin;
+import evaluationSystemPG1.entities.AdminDAO;
 import evaluationSystemPG1.entities.Evaluation;
 import evaluationSystemPG1.entities.EvaluationDAO;
 import evaluationSystemPG1.entities.Label;
@@ -28,6 +30,14 @@ public class HibernateTest {
 
 	public static void main(String[] arg) {
 		init();
+		
+		AdminDAO adminDAO = AdminDAO.getInstance();
+		String accountName = "Test";
+		String password = "test";
+		Admin admin = new Admin();
+		admin.setAccountName(accountName);
+		admin.setPassword(password);
+		adminDAO.save(admin);
 		
 		LabelDAO altDAO = LabelDAO.getInstance();
 		for (int i = 1; i < 7; i++) {
@@ -120,9 +130,9 @@ private static TextOption getTextOption(String bla) {
 }
 	public static void init() {
 		// Olles sökväg till konfigfil
-		// /Users/ollesvensson/Programering/helios/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml
-		File configFile = new File(
-				"/Users/ollesvensson/Programering/helios/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml");
+		String olle_path = "/Users/ollesvensson/Programering/helios/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml";
+		String sten_path = "C://Users/Public/Documents/Workspace/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml";
+		File configFile = new File(sten_path);
 		HibernateUtil.initHibernate(configFile);
 	}
 
