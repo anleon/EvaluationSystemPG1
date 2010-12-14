@@ -166,6 +166,7 @@ public class AdminServlet extends HttpServlet {
 		EvaluationDAO etDAO = EvaluationDAO.getInstance();
 		List<Evaluation> evaluationList = etDAO.getAll();
 		request.setAttribute("evaluationList", evaluationList);
+
 		request.getRequestDispatcher("/EvalvaluationList.jsp").forward(request, response);
 	}
 
