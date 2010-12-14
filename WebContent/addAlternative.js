@@ -171,5 +171,58 @@ $(document).ready(function(){
 			return false;
 		});
 	});
+	
+	function inc(filename){
+		var script = $("<script type='text/javascript'></script>").attr("src",filename); 
+		$("body").append(script);
+	}
+
+	inc("jstest2.js");
+	
+	
+	eval_json = {
+			"title" : "En fin titel",
+			"group" : "0",
+			"eval_component" : [
+                {
+                	"type" : "section",
+                	"title" : "Fin Sektionstitel",
+                	"description" : "En mycket fin beskrivning för den här sektionen av frågor"
+                } , 
+                {
+                	"type" : "question",
+                	"description" : "AA textOption och radiobutton1to6",
+                		"options" : {"choice" : {}}
+                } , 
+                {
+                	"type" : "question",
+                	"description" : "BBBBBBBBBBBBBBBBB",
+                	"options" : {
+                		"free_text" : false,
+                		"choice" : {"single_choice" : {"alternatives": ["dåligt","ok","bra","utmärkt"]}}		
+                	}
+                } ,
+                {
+                	"type" : "question",
+                	"description" : "CCCCCCCCCCCCCCCCCCCC",
+                	"mandatory" : false,
+                	"options" : {
+                		"free_text" : false,
+                		"choice" : {"multiple_choice" : {"alternatives": ["utåtriktad","glad","målfokuserad"]}}		
+                	}
+                } ,
+                {
+                	"type" : "question",
+                	"description" : "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+                	"mandatory" : false,
+                	"options" : {
+                		"choice_set" : false,
+                		"choice" : {"multiple_choice" : {"alternatives": ["utåtriktad","glad","målfokuserad"]}}		
+                	}
+                }
+          ]
+	};
+	
+	populate(eval_json);
 		
 });
