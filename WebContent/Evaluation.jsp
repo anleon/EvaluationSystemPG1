@@ -17,16 +17,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Utvärdering :: KYH</title>
-		<link rel="stylesheet" type="text/css" href="/main.css" />
-		<script type="text/javascript" src="/jquery-1.4.2.min.js"></script>
-		<script type="text/javascript" src="/addAlternative.js" ></script>
+		<link rel="stylesheet" type="text/css" href="/EvaluationSystemPG1/main.css" />
+		<script type="text/javascript" src="/EvaluationSystemPG1/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="/EvaluationSystemPG1/addAlternative.js" ></script>
 	</head>
 	<body>
-		<h1>Utvärdering KYH <a href="/Login">Logga ut</a></h1>
+		<h1>Utvärdering KYH <a href="/EvaluationSystemPG1/Admin/Login">Logga ut</a></h1>
 		<nav>
 			<ul>
-				<li><a href="Admin/Evaluations">Utvärdering</a></li>
-				<li><a href="Admin/Groups">Grupper</a></li>
+				<li><a href="/EvaluationSystemPG1/Admin/Evaluations/">Utvärdering</a></li>
+				<li><a href="/EvaluationSystemPG1/Admin/Groups/">Grupper</a></li>
 			</ul>
 		</nav>
 		<form action="" method="get">

@@ -14,6 +14,8 @@ import evaluationSystemPG1.entities.Admin;
 import evaluationSystemPG1.entities.AdminDAO;
 import evaluationSystemPG1.entities.Evaluation;
 import evaluationSystemPG1.entities.EvaluationDAO;
+import evaluationSystemPG1.entities.Group;
+import evaluationSystemPG1.entities.GroupDAO;
 import evaluationSystemPG1.entities.Label;
 import evaluationSystemPG1.entities.LabelDAO;
 import evaluationSystemPG1.entities.CheckboxPanel;
@@ -47,7 +49,15 @@ public class HibernateTest {
 		}
 		
 		Evaluation eval = new Evaluation();
-	
+		eval.setDate(new Date());
+		eval.setTitle("Försök 1");
+		GroupDAO gDAO = GroupDAO.getInstance();
+		
+		Group group = new Group();
+		group.setGroupName("Ad10");
+		gDAO.save(group);
+		gDAO.get(1);
+		eval.setGroup(group);
 		
 		QuestionDAO qDAO = QuestionDAO.getInstance();
 	// FRÅGA 1 

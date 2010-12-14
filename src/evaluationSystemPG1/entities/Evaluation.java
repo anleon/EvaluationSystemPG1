@@ -22,6 +22,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import evaluationSystemPG1.abstracts.IEntity;
 
@@ -34,12 +35,9 @@ public class Evaluation implements Serializable,IEntity{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
-	@Column(name = "group_id" )
+	@OneToOne(cascade = CascadeType.ALL)
 	private Group group;
-	// TODO Rename date to what it actually means.
 	private Date date;
-	// TODO Change parts from List<Question> to List<IEvalComponent>.
-	// TODO Add hibernate join annotations here.
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "evaluation_id")
 	private List<Question> parts = new ArrayList<Question>();
