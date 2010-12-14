@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 import evaluationSystemPG1.abstracts.IEntity;
 
-@Entity(name = "alternatives")
+@Entity(name = "labels")
 public class Label implements IEntity,Serializable{
 	
 	/**

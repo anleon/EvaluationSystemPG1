@@ -4,13 +4,11 @@
 <%@page import="evaluationSystemPG1.entities.Group"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.LinkedList"%>
-<% 	Evaluation et = (Evaluation) request.getAttribute("evalTemplate");
-	 List<Group> gs = (List<Group>) request.getAttribute("groups");
-	// Temporary test code 
-		gs = new LinkedList<Group>();
+<% 	Evaluation et = (Evaluation) request.getAttribute("evaluation");
+	List<Group> gs = (List<Group>) request.getAttribute("groups");
+	//Temporary test code 
 		Group gg = new Group();
 		gg.setGroupName("AD10");
-		gs.add(gg);
 
 	// End temporary test code
 %>
@@ -19,16 +17,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Utvärdering :: KYH</title>
-		<link rel="stylesheet" type="text/css" href="main.css" />
-		<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
-		<script type="text/javascript" src="addAlternative.js" ></script>
+		<link rel="stylesheet" type="text/css" href="/main.css" />
+		<script type="text/javascript" src="/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="/addAlternative.js" ></script>
 	</head>
 	<body>
 		<h1>Utvärdering KYH <a href="/Login">Logga ut</a></h1>
 		<nav>
 			<ul>
-				<li><a href="Evaluations">Utvärdering</a></li>
-				<li><a href="Groups">Grupper</a></li>
+				<li><a href="Admin/Evaluations">Utvärdering</a></li>
+				<li><a href="Admin/Groups">Grupper</a></li>
 			</ul>
 		</nav>
 		<form action="" method="get">
@@ -46,7 +44,7 @@
 				<label for="group">Grupp</label>
 				<select id="group" name="eval_.group">
 					<% for(Group g : gs) { %> 
-					<option value="<%= g.getId() %>"><%= g.getGroupName() %></option>
+					<option value="<%= g.getId() %>"> <%= g.getGroupName() %></option>
 					<% } %>
 				</select>
 			</div>

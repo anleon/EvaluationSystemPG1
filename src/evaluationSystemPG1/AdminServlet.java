@@ -26,15 +26,21 @@ import evaluationSystemPG1.abstracts.EntitiesDAO;
 import evaluationSystemPG1.db.HibernateUtil;
 import evaluationSystemPG1.entities.Evaluation;
 import evaluationSystemPG1.entities.EvaluationDAO;
+import evaluationSystemPG1.entities.Group;
+import evaluationSystemPG1.entities.GroupDAO;
 import evaluationSystemPG1.entities.Question;
 
 /**
  * Servlet implementation class Guestbook
  */
 public class AdminServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
     	
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6535687373602746205L;
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public AdminServlet() {
@@ -65,21 +71,57 @@ public class AdminServlet extends HttpServlet {
 		 * /Groups/Create
 		 * 
 		 * */
+		
 		String s = request.getRequestURI();
 		String[] ss = s.split("/");
 	
 		// String projectName = ss[1];
 		// String servletName = ss[2];
-		String pageName = "";
+		String pageUrlName = "";
 		String identifier = "";
 		if (ss.length > 3) {
-			pageName = ss[3];
+			pageUrlName = ss[3];
 		}
 		if (ss.length > 4) {
 			identifier = ss[4];
 		}
 		
-		if ("Evaluations".equals(pageName)) {
+		if ("Evaluations".equals(pageUrlName)){
+			if (!identifier.isEmpty()){
+				int id = 0;
+				try {
+					id = Integer.parseInt(identifier);
+				} catch (Exception e) {
+					id = 0;
+				}
+				pageEvaluation(request, response, id);
+			}
+			else {
+				pageEvaluationList(request, response);
+			}	
+		} else if ("Groups".equals(pageUrlName)){
+			if (!identifier.isEmpty()){
+				int id = 0;
+				try {
+					id = Integer.parseInt(identifier);
+				} catch (Exception e) {
+					id = 0;
+				}
+				pageGroup(request, response, id);
+			}
+			else {
+				pageGroupList(request, response);
+			}
+		} else if ("Login".equals(pageUrlName)){
+			pageLogin(request, response);
+		} else {
+			pageLogin(request, response);			
+		}
+		
+		
+		
+		
+/*		if ("Evaluations".equals(pageName)) {
 			pageEval(request,response,identifier);
 		} else if ("Groups".equals(pageName)) {
 			request.getRequestDispatcher("/Groups.jsp").forward(request, response);
@@ -89,33 +131,59 @@ public class AdminServlet extends HttpServlet {
 		
 		
 		Writer wr = response.getWriter();
-		wr.write(pageName + "<br />");
+		wr.write(pageUrlName + "<br />");
 		for(String string: ss) {
 			wr.write(string);
 			wr.write(",");
 		}
-		
+	*/	
 	}
 
-	private void pageEval(HttpServletRequest request, HttpServletResponse response, String identifier) throws ServletException, IOException {
-		int id;
-		try {
-			id = Integer.parseInt(identifier);
-		} catch (Exception e) {
-			id = 0;
-		}
+	private void pageEvaluation(HttpServletRequest request, HttpServletResponse response, int id) throws ServletException, IOException {
+		EvaluationDAO etDAO = EvaluationDAO.getInstance();
+		GroupDAO gDAO = GroupDAO.getInstance();
+		List<Group> groups = gDAO.getAll();
+		request.setAttribute("groups", groups);
+		
 		if (id == 0) {
-			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
+			Evaluation et = new Evaluation();
+			
+			request.getRequestDispatcher("/Evaluation.jsp").include(request, response);
 		} else {
-			EvaluationDAO etDAO = EvaluationDAO.getInstance();
 			Evaluation et = etDAO.get(id);
+			System.out.println(et.getParts().get(0).getText());
 			if (et != null) {
-				request.setAttribute("EvalTemplate", et);
+				request.setAttribute("evaluation", et);
 			} else {
 				et = new Evaluation();
 			}
-			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
+			request.getRequestDispatcher("/Evaluation.jsp").include(request, response);
 		}
+	}
+
+	private void pageEvaluationList(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		EvaluationDAO etDAO = EvaluationDAO.getInstance();
+		List<Evaluation> evaluationList = etDAO.getAll();
+		request.setAttribute("evaluationList", evaluationList);
+		request.getRequestDispatcher("EvalaluationList.jsp").forward(request, response);
+	}
+
+	private void pageLogin(HttpServletRequest request,
+			HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void pageGroupList(HttpServletRequest request,
+			HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void pageGroup(HttpServletRequest request,
+			HttpServletResponse response, int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -137,5 +205,4 @@ public class AdminServlet extends HttpServlet {
 			request.getRequestDispatcher("EvalTemplate.jsp").forward(request, response);
 		}
 	}
-
 }

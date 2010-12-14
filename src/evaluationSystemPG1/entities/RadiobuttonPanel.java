@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import evaluationSystemPG1.abstracts.IEntity;
@@ -20,16 +21,6 @@ public class RadiobuttonPanel extends Option implements Serializable,IEntity {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn()
 	private List<RadiobuttonPanelAnswer> answer = new ArrayList<RadiobuttonPanelAnswer>();
-
-	private List<Label> alternatives;
-	
-	public List<Label> getAlternatives() {
-		return alternatives;
-	}
-
-	public void setAlternatives(List<Label> alternatives) {
-		this.alternatives = alternatives;
-	}
 
 	public void setAnswer(List<RadiobuttonPanelAnswer> answer) {
 		this.answer = answer;
