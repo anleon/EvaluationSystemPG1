@@ -6,7 +6,6 @@ $(document).ready(function(){
 	// "section_div_" är 12 bokstäver
 	// "question_div_" är 13 bokstäver 
 	var counter = 3;
-	console.log(counter);
 	var section_id_length = 12;
 	var question_id_length = 13;
 	var idAttr = '';
@@ -157,7 +156,7 @@ $(document).ready(function(){
 				$(this).parent().remove();
 			}else{
 				$(this).parent().parent().remove();
-				//console.log($(this));
+				
 			}
 		});
 		

@@ -12,7 +12,9 @@ public class PopulateDB {
 	 */
 	public static void main(String[] args) {
 		// Olles sökväg till konfigfil /Users/ollesvensson/Programering/helios/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml
-		File configFile = new File("/Users/ollesvensson/Programering/helios/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml");
+		String olle_path = "/Users/ollesvensson/Programering/helios/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml";
+		String sten_path = "C://Users/Public/Documents/Workspace/EvaluationSystemPG1/WebContent/WEB-INF/hibernate/hibernate.cfg.xml";
+		File configFile = new File(sten_path);
 		HibernateUtil.initHibernate(configFile);
 
 		LabelDAO altDAO = LabelDAO.getInstance();
