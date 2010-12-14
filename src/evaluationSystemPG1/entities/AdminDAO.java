@@ -25,15 +25,15 @@ public class AdminDAO extends EntitiesDAO<Admin> {
 		Session herbSession = HibernateUtil.getSession();
 		herbSession.beginTransaction();
 		
-		String query = "select count(*) from admin where password = :password and name = :accountName";
+		String query = "select count(*) from admin where password = :password and accountName = :accountName";
 		// FIXME plain-text passwords, DANGER! No time to check the Java-way of applying hashing+salt properly.
 		String hashed_password = password;
 		
 		// Nice Trick to just check if there is a result or not.
-	    Integer has_permissions = ( (Integer) herbSession.createQuery(query)
+	    Long has_permissions = ( (Long) herbSession.createQuery(query)
 	    			.setString("accountName", accountName)
 	    			.setString("password",hashed_password)
-	    			.iterate().next() ).intValue();
+	    			.iterate().next() ).longValue();
 		
 		herbSession.getTransaction().commit();
 		
