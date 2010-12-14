@@ -65,10 +65,10 @@ public class AdminServlet extends HttpServlet {
 		 * /Evaluations
 		 * /Evaluations/{id}
 		 * /Groups
-		 * /Groups/{id}
-		 * 
-		 * /Evaluations/Create
-		 * /Groups/Create
+		 * /Groups/{id} funkar ej
+ 		 * 
+		 * /Evaluations/Create funkar ej
+		 * /Groups/Create funkar ej
 		 * 
 		 * */
 		
