@@ -97,6 +97,7 @@ public class AdminServlet extends HttpServlet {
 				pageEvaluation(request, response, id);
 			}
 			else {
+				System.out.println("sgddddddddddddddd");
 				pageEvaluationList(request, response);
 			}	
 		} else if ("Groups".equals(pageUrlName)){
@@ -165,24 +166,25 @@ public class AdminServlet extends HttpServlet {
 		EvaluationDAO etDAO = EvaluationDAO.getInstance();
 		List<Evaluation> evaluationList = etDAO.getAll();
 		request.setAttribute("evaluationList", evaluationList);
-		request.getRequestDispatcher("EvalvaluationList.jsp").forward(request, response);
+
+		request.getRequestDispatcher("/EvalvaluationList.jsp").forward(request, response);
 	}
 
 	private void pageLogin(HttpServletRequest request,
-			HttpServletResponse response) {
-		// TODO Auto-generated method stub
+			HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/Login.jsp").include(request, response);
 		
 	}
 
 	private void pageGroupList(HttpServletRequest request,
-			HttpServletResponse response) {
-		// TODO Auto-generated method stub
+			HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/Groups.jsp").include(request, response);
 		
 	}
 
 	private void pageGroup(HttpServletRequest request,
-			HttpServletResponse response, int id) {
-		// TODO Auto-generated method stub
+			HttpServletResponse response, int id) throws ServletException, IOException {
+		request.getRequestDispatcher("/Groups.jsp").include(request, response);
 		
 	}
 

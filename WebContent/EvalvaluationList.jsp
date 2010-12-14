@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="evaluationSystemPG1.entities.*"%>
+<%@page import="evaluationSystemPG1.entities.Evaluation"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%	
-	List<Evaluation> evalList = (List<Evaluation>) request.getAttribute("EvalList");
+	List<Evaluation> evalList = (List<Evaluation>) request.getAttribute("evaluationList");
 	// TODO Change this temporary code. 
 	evalList = new ArrayList<Evaluation>();
 %>
@@ -13,16 +13,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Alla utvärderingar :: KYH</title>
-<link rel="stylesheet" type="text/css" href="main.css" />
+<link rel="stylesheet" type="text/css" href="/EvaluationSystemPG1/main.css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-<script type="text/javascript" src="main.js" ></script>
+<script type="text/javascript" src="/EvaluationSystemPG1/main.js" ></script>
 </head>
 <body>
-	<h1>Utvärdering KYH <a href="/Login">Logga ut</a></h1>
+	<h1>Utvärdering KYH <a href="/EvaluationSystemPG1/Admin/Login">Logga ut</a></h1>
 	<nav>
 		<ul>
-			<li><a href="Evaluations">Utvärdering</a></li>
-			<li><a href="Groups">Grupper</a></li>
+			<li><a href="/EvaluationSystemPG1/Admin/Evaluations">Utvärdering</a></li>
+			<li><a href="/EvaluationSystemPG1/Admin/Groups">Grupper</a></li>
 		</ul>
 	</nav>
 	
@@ -39,8 +39,8 @@
 					<!-- 
 					Insert with Javascript here.
 					 -->
-					<span><img src="img/arrow_up.jpg" alt="Pil upp"/></span>
-					<span><img src="img/arrow_down.jpg" alt="Pil ner"/></span>
+					<span><img src="/EvaluationSystemPG1/arrow_up.jpg" alt="Pil upp"/></span>
+					<span><img src="/EvaluationSystemPG1/arrow_down.jpg" alt="Pil ner"/></span>
 				</th>
 				<th><span>Grupp</span></th>
 				<th><span>Publicerad</span></th>
@@ -55,7 +55,7 @@
 				<td><%= e.getGroup().getGroupName() %></td>
 				<td><% //TODO e.getPublishDate() %></td>
 				<td><% //TODO e.getFinishDate() %></td>
-				<td><img src="img/delete.jpg" alt="Ta bort utv." /></td>
+				<td><img src="/EvaluationSystemPG1/delete.jpg" alt="Ta bort utv." /></td>
 			</tr>
 		<tbody>
 		<% } %>
